@@ -1,0 +1,1218 @@
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.Border;
+
+//import Jeu.Boutton_jeu;
+//import Jeu.Boutton_quitter;
+
+//import Plateau.Case_bonus;
+
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.Hashtable;
+
+public class Partie extends JFrame  {
+  private  Plateau plat;
+  private  int Position_joueur=0;
+    JLabel ls;
+  /*  public static int n_case_saut;
+    public static int n_case_bonus;
+    public static int n_case_malus;
+    public static int n_case_question;*/
+    JLabel ln;
+    JLabel lw;
+    JLabel l1;
+    JLabel nouvelle_partie;                                  //
+	 JLabel reprendre_partie;                                //
+	 JLabel Meilleur_score;							 // declaration des bouttons
+	JLabel suspendre_partie;	
+	JLabel score_joueur;//
+	 JLabel quitter;	
+	 boolean entre=false;
+	 JLabel partie2;
+	 JLabel joueur_text;
+	 JLabel score_text;
+	 JLabel zone_pn ;
+	 JLabel zone_gauche_l ;                                     //
+	 JLabel zone_bat_l ;                                       //      déclaration des zones d'images 
+	 JLabel zone_bat_l1 ;                                     // 
+	 JLabel zone_dé_1 ; 
+	 JLabel zone_dé_2 ; 
+	 JLabel zone_haut_l ;
+	 JLabel zone_pnl ; 
+	 JLabel lancer_de;
+	 
+	
+	 ImageIcon image_de_1;
+	 ImageIcon image_de_2;	                               	                              // declaration des images
+	ImageIcon quitter_icon;                           //
+	ImageIcon zone_centre;
+	 
+static int o;
+    
+    
+    public 	Dé de_1;
+    public 	Dé de_2;
+    public Joueur j1;
+	public Partie (String nom_util) 
+	{   
+		setSize(1100, 700);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(true);
+		setLocationRelativeTo(null);
+		
+		
+		
+		
+		
+		ls=new JLabel();
+		ln=new JLabel();
+		lw=new JLabel();
+		l1=new JLabel();
+		
+		
+		de_1=new Dé();
+		de_2=new Dé();
+		 j1=new Joueur(nom_util, 0);
+	   
+	 
+		ls.setIcon(new ImageIcon("media/plateau_bat.png"));
+		ln.setIcon(new ImageIcon("media/plateau_haut.png"));
+		lw.setIcon(new ImageIcon("media/plateau_gh.png"));
+		
+		plat=new Plateau();
+		partie2=new JLabel();
+		partie2.setLayout(new BorderLayout());
+		partie2.add(lw,BorderLayout.WEST);
+		partie2.add(l1,BorderLayout.CENTER);
+		l1.setLayout(new BorderLayout());
+		l1.add(ls,BorderLayout.SOUTH);
+		l1.add(ln,BorderLayout.NORTH);
+		l1.add(plat,BorderLayout.CENTER);
+
+		
+		
+		
+		////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+	     													  //	
+	   														 //
+															//  initialisation des images
+		  zone_centre=new ImageIcon("media/Center.png");												   //
+		  quitter_icon=new ImageIcon("media/enregistrer_partier.png");									  //
+		  
+		
+	     zone_pn =new JLabel();
+		 zone_gauche_l = new JLabel();	//la zone gauche du fenetre 																		//
+		 zone_bat_l =new JLabel();		//la zone bat du fenetre 																		   //
+		 zone_bat_l1 =new JLabel();		//la zone gauche de la zone bat 																  //initialisation des zones d'images														   			 //
+		 zone_haut_l = new JLabel();	//	la zone haut du fenetre 																	//
+		 zone_pnl =new JLabel();          // la zone centre du fenetre
+		 
+		  JLabel zone_util_inf =new JLabel();  
+		
+
+		 nouvelle_partie=new JLabel();                       //
+	     nouvelle_partie.setIcon(new ImageIcon("media/nouvelle_1.png"));
+		 reprendre_partie=new JLabel();	
+		  reprendre_partie.setIcon(new ImageIcon("media/ouvrir_partie.png"));                                                                         //initialisation des bouttons 
+	     Meilleur_score=new JLabel();				   //
+	    Meilleur_score.setIcon(new ImageIcon("media/enregistrer_partier.png"));  
+		 suspendre_partie=new JLabel();					  //
+		suspendre_partie.setIcon(new ImageIcon("media/suspendre_partie.png"));  
+		score_joueur=new JLabel();
+		score_joueur.setIcon(new ImageIcon("medie/score_joueur.png"));
+		 quitter=new JLabel();
+		 
+		 zone_bat_l.setIcon(new ImageIcon("media/bare_bas.png"));                //
+		 zone_gauche_l.setIcon(new ImageIcon("media/bare_gauche.png")); 		  //  attribuer les images a leurs zones
+		 zone_haut_l.setIcon(new ImageIcon("media/bare_haut.png"));			  //
+
+		
+		 zone_pn.setLayout(new BorderLayout());      // définir le layout du fenetre principale
+		 setContentPane(zone_pn);
+	/////////////////----------------------ajou des boutton du menu	 
+		 zone_pn.add(zone_gauche_l,BorderLayout.WEST);
+		 nouvelle_partie.setPreferredSize(new Dimension(159,50));			//
+		 reprendre_partie.setPreferredSize(new Dimension(159,49));          //    definir la taille des bouttons 
+		 Meilleur_score.setPreferredSize(new Dimension(159,49));		//
+		 suspendre_partie.setPreferredSize(new Dimension(159,49));			//
+		 score_joueur.setPreferredSize(new Dimension(159,49));
+	 
+		 zone_gauche_l.setLayout(new FlowLayout());
+		 JLabel o=new JLabel();
+		 o.setPreferredSize(new Dimension(160,12));
+		 zone_gauche_l.add(o);
+		 zone_gauche_l.add(nouvelle_partie);
+		 zone_gauche_l.add(reprendre_partie);     										
+		 
+		 zone_gauche_l.add(suspendre_partie);
+		 zone_gauche_l.add(Meilleur_score);
+		// zone_gauche_l.add(score_joueur);
+		 zone_util_inf.setPreferredSize(new Dimension(215,110));
+		/////////////////-----------------------------------------------------------------------//////////////////////////// 
+
+		 
+		 
+		 /////////////// affichage du zone du non de joueur -------------------------------------------------////////////////
+		  joueur_text=new JLabel();
+		 joueur_text.setPreferredSize(new Dimension(80,30));
+		
+		 JLabel k=new JLabel();
+		 k.setPreferredSize(new Dimension(280,28));
+		 score_text=new JLabel();
+		 score_text.setPreferredSize(new Dimension(30,50));
+		// joueur_text.setFont(new Font("Bernard MT Condenced", 10, 23));
+		// score_text.setFont(new Font("Agency FB", 10, 23));
+		// String chemin=""+partie.j1.Score;
+		 joueur_text.setText(j1.nom);
+		 joueur_text.setForeground(Color.BLACK);
+		 score_text.setText("00");
+		 score_text.setForeground(Color.BLACK);
+		
+		 zone_gauche_l.add(zone_util_inf);
+		 zone_gauche_l.add(joueur_text);
+		 zone_gauche_l.add(k);
+		 zone_gauche_l.add(score_text);
+
+		 //////////////////////////////////////////////////////////////////////-----------------------------------------------------
+		 zone_pn.add(zone_pnl,BorderLayout.CENTER);
+		 zone_pnl.setLayout(new BorderLayout()); 
+		 zone_pnl.add(zone_haut_l,BorderLayout.NORTH);
+		 zone_pnl.add(zone_bat_l,BorderLayout.SOUTH);
+		 zone_pnl.add(partie2,BorderLayout.CENTER);
+		 
+		 //////////////////////////////////******zone des dés-------------------------------------------------
+		 JLabel i=new JLabel();
+		 i.setPreferredSize(new Dimension(250,10));
+		 image_de_1=new ImageIcon("media/image_de1.png");
+		 image_de_2=new ImageIcon("media/image_de1.png");
+		 zone_dé_1=new JLabel();
+		 zone_dé_2=new JLabel();
+		 zone_dé_2.setIcon(image_de_2);
+		 zone_dé_1.setIcon(image_de_1);
+		 zone_gauche_l.add(i);
+		 zone_gauche_l.add(zone_dé_1);
+		 zone_gauche_l.add(zone_dé_2);
+		 
+		 
+		 lancer_de=new JLabel();
+		 lancer_de.setIcon(new ImageIcon("media/lance_dé1.png"));
+		 zone_gauche_l.add(lancer_de);
+		
+		 lancer_de.addMouseListener(new MouseAdapter() {
+			 
+			 public void mouseEntered(MouseEvent v)
+			 {    
+				 
+				 
+				 lancer_de.setIcon(new ImageIcon("media/lance_dé2.png"));
+			 }
+			 public void mouseExited(MouseEvent v)
+			 {    
+				 
+				
+				 lancer_de.setIcon(new ImageIcon("media/lance_dé1.png"));
+			 }
+			 public void mouseClicked(MouseEvent v)
+			 {    
+				if ((de_1.lancer==true) &&  (de_2.lancer==true))
+				{
+				    de_1.valeur_dé();
+				    de_1.lancer=false;
+				 
+				    image_de_1= de_1.img2;
+				    zone_dé_1.setIcon(image_de_1);  
+				    de_2.lancer=false;
+					de_2.valeur_dé();
+				    image_de_2= de_2.img2;
+				    zone_dé_2.setIcon(image_de_2); 
+				    set_position(get_position()+de_1.valeur+de_2.valeur);
+				    
+				 }
+			 }
+			 
+		});
+		 
+		 
+		 
+		
+		 //-------------------------------------------------------------------------------------------------------------------
+		 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 /////////////////////-------------------------------------------- la zone du boutton quitter 
+		 //zone_bat_l1.setIcon(zone_bat_1);
+		 zone_bat_l1.setPreferredSize(new Dimension(650,72));
+		 zone_bat_l.setLayout(new FlowLayout());         //
+		 zone_bat_l.add(zone_bat_l1);
+		 quitter.setIcon(new ImageIcon("media/button_quitter.png"));
+		 zone_bat_l.add(quitter);
+ 
+		 
+		 quitter.addMouseListener(new MouseAdapter() {
+			 
+			 public void mouseEntered(MouseEvent v)
+			 {    
+				 
+				 
+					
+				 quitter.setIcon(new ImageIcon("Media/button_quitter2.png"));
+				 
+			 }
+			
+			 
+			 public void mouseClicked(MouseEvent v)
+			 {    
+				 
+				 dispose();
+				 
+			 }
+			 public void mouseExited(MouseEvent v)
+			 {    
+				 
+				 quitter.setIcon(new ImageIcon("Media/button_quitter.png"));
+				 
+			 }
+			 
+			 
+			 
+		});
+		 
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 
+		 
+		 nouvelle_partie.addMouseListener(new MouseAdapter() 
+			{
+				   public void mouseEntered (MouseEvent ev) 
+				   {                                                                         
+					   
+					nouvelle_partie.setIcon(new ImageIcon("Media/nouvelle_2.png"));
+				   }
+				   
+				   public void mouseClicked (MouseEvent ev) 
+				   {              //       System.out.println("hc");                                                    
+					   //remove(partie);
+					  // partie=new Partie();
+					//   partie.repaint();
+					  // System.out.println("hc2");
+					 //  zone_pnl.add(partie,BorderLayout.CENTER);
+					   
+				   }
+			
+			   public void mouseExited (MouseEvent ev)
+			   {
+					   
+					  
+				   
+				   nouvelle_partie.setIcon(new ImageIcon("Media/nouvelle_1.png"));
+			   }
+			
+			});
+		  
+		 reprendre_partie.addMouseListener(new MouseAdapter() 
+			{
+				   public void mouseEntered (MouseEvent ev) 
+				   {
+					   reprendre_partie.setIcon(new ImageIcon("Media/ouvrir_partie1.png"));
+					   																				 //
+				   }																					 //
+				   
+			
+			   public void mouseExited (MouseEvent ev)
+			   {
+					   
+				   reprendre_partie.setIcon(new ImageIcon("Media/ouvrir_partie.png"));
+				   }
+				   
+				   
+				   
+			
+			});
+		 	 
+		 Meilleur_score.addMouseListener(new MouseAdapter() 
+			{
+				   public void mouseEntered (MouseEvent ev) 
+				   {
+					   
+					   Meilleur_score.setIcon(new ImageIcon("Media//enregistrer_partier1.png"));																			//
+				   }																			   //
+				   
+			
+			   public void mouseExited (MouseEvent ev)
+			   {
+					   
+				  Meilleur_score.setIcon(new ImageIcon("Media/enregistrer_partier.png"));
+				   }
+				   
+				   
+				   
+			
+			});
+	 
+		score_joueur.addMouseListener(new MouseAdapter() 
+			{
+				   public void mouseEntered (MouseEvent ev) 
+				   {
+					   
+					   score_joueur.setIcon(new ImageIcon("Media//score_joueur2.png"));																			//
+				   }																			   //
+				   
+			
+			   public void mouseExited (MouseEvent ev)
+			   {
+					   
+				 score_joueur.setIcon(new ImageIcon("Media/score_joueur.png"));
+				   }
+				   
+				   
+				   
+			
+			});
+		 
+		 
+		 suspendre_partie.addMouseListener(new MouseAdapter() 
+			{
+				   public void mouseEntered (MouseEvent ev) 
+				   { 
+					   																							//
+					   suspendre_partie.setIcon(new ImageIcon("Media/suspendre_partie1.png"));																						//
+				   }
+				   
+			
+			   public void mouseExited (MouseEvent ev)
+			   { 																								//
+					   																							//	
+				   suspendre_partie.setIcon(new ImageIcon("Media/suspendre_partie.png"));
+				   }
+				   
+				   
+				   
+			
+			});
+	    
+		 setVisible(true);          // rendre la fenetre visible 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		///////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+		
+		
+		
+	}	
+	
+	
+	
+	public void set_position(int i)
+	{
+		Position_joueur=i;
+		
+	}
+	
+	public int get_position()
+	{
+		
+		return Position_joueur;
+	}
+	
+/*	public void paintComponent(Graphics g)
+	{ System.out.println("dsfb");
+		plat =new Plateau();
+		
+	}*/
+	public class Plateau  extends JLabel {
+	    
+		public ImageIcon fond;
+		public Case tab_cas[];
+		
+		public Hashtable<Integer, Case>  tab_cas1=new Hashtable<Integer,Case>();
+	public 	Plateau()  
+	{  
+	   
+	    fond =new ImageIcon("media/plateau.png");
+	    
+	     
+		tab_cas=new Case[100];
+	    setIcon(fond);
+		setLayout(new GridBagLayout());
+		GridBagConstraints c=new GridBagConstraints();
+		
+		
+		//tab_cas[0]=new Case_depart();
+		
+	/*	for(int i=0;i<10;i++)
+		{
+			System.out.println(random_m(2, 0));
+			
+			
+		}*/
+			
+		/*c.gridx=0;
+		  c.gridy=0;
+		  c.weightx=4.0;
+		  c.weighty=4.0;
+		add(tab_cas[0],c);*/
+		
+		generer_tab_aleatoire();
+		
+		Case g;
+		
+		
+		for(int i=0;i<100;i++)
+		{  // tab_cas[i]= generer_case(i);
+		//	tab_cas[i]=new Case_depart();
+			if (i<17)
+			{ c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=i*4;
+			  c.gridy=0;
+			  c.weightx=4.0;
+			  c.weighty=4.0;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			add(tab_cas1.get(i),c);
+			}
+			if((i>=17)&&(i<26))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=16*4;
+			  c.gridy=i*4-16*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}
+			
+			
+			
+			
+			if((i>=26)&&(i<41))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=41*4-i*4;
+			  c.gridy=10*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}
+			
+			
+			if((i>=41)&&(i<48))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=0;
+			  c.gridy=50*4-i*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}
+			
+		
+			if((i>=48)&&(i<61))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=i*4-47*4;
+			  c.gridy=2*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}
+			
+			if((i>=61)&&(i<66))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=14*4;
+			  c.gridy=i*4-58*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}
+			
+			if((i>=66)&&(i<77))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=79*4-i*4;
+			  c.gridy=8*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}
+		
+			
+			if((i>=77)&&(i<80))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=2*4;
+			  c.gridy=84*4-i*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}
+		
+			if((i>=80)&&(i<89))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=i*4-77*4;
+			  c.gridy=4*4;
+			  tab_cas1.get(i).set_vnumero(i+1);
+			  add(tab_cas1.get(i),c);
+			}		/*	
+			if((i>=96)&&(i<100))
+			{c.fill=GridBagConstraints.BOTH ;
+			  c.gridx=10;
+			  c.gridy=i-92;
+			  add(tab_cas1.get(i),c);
+			}*/
+			
+			
+		}  
+	
+		
+		
+		//add(pan);
+		
+	}
+	///////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////    generation aleatoire du tableau
+	public void generer_tab_aleatoire()
+	{int k=0;
+	
+	tab_cas1.put(0, new Case_depart(k+1));
+	tab_cas1.put(99, new Case_fin(k+1));
+	
+		for (int i=0;i<5;i++)
+		{
+			
+			while(tab_cas1.containsKey(k))
+			{
+				k=random_m(97, 0);
+				
+			}tab_cas1.put(k, new Case_bonus(k+1));
+			tab_cas1.get(k).repaint();
+		}
+		
+		
+		for (int i=0;i<5;i++)
+		{
+			k=random_m(97, 0);
+			while(tab_cas1.containsKey(k))
+			{
+				k=random_m(97, 0);		
+			}
+			tab_cas1.put(k, new Case_suat(k+1));	
+			tab_cas1.get(k).repaint();
+		}
+		for (int i=0;i<5;i++)
+		{
+			k=random_m(97, 0);
+			while(tab_cas1.containsKey(k))
+			{
+				k=random_m(97, 0);	
+			}
+			tab_cas1.put(k, new Question_définition(k+1));
+			//tab_cas1.get(k).repaint();
+		}
+		for (int i=0;i<5;i++)
+		{
+			k=random_m(97, 0);
+			while(tab_cas1.containsKey(k))
+			{
+				k=random_m(97, 0);	
+			}
+			tab_cas1.put(k, new Case_malus(k+1));	
+			//tab_cas1.get(k).repaint();
+		}
+		for (int i=0;i<5;i++)
+		{
+			k=random_m(97, 0);
+			while(tab_cas1.containsKey(k+1))
+			{
+				k=random_m(97, 0);
+			}
+			tab_cas1.put(k, new Question_image(k+1));	
+			//tab_cas1.get(k).repaint();
+		}
+		
+		for (int i=1;i<99;i++)
+		{
+			//tab_cas1.put(i, new Case_parcourt());
+			
+			if(!tab_cas1.containsKey(i))
+			{		tab_cas1.put(i, new Case_parcourt(i+1));
+			//tab_cas1.get(k).repaint(i);
+			}
+		
+		}
+			
+		
+	    }	
+	
+	
+	
+	/////////////////////////////////////////////
+	///////////////////////////////////////////////donner un entier entre deux nombre
+	
+	public  int random_m(int c1/*valeur superieur*/,int c2/*valeur inférieur*/)
+	
+	{
+	int k=0,j=0;	
+		k=c1-c2;
+	j= (int) ((Math.random()*1000)%k);
+	j+=c2;
+	j++;
+	return j;
+	}
+	/////////////////////////////////////////////////////
+	////////////////////////////       la fonction qui p   permet de génerer une case aléatoirement 
+	
+	
+/*	public Case  generer_case(int i)
+	{  Case j;
+		int s=0;
+
+	j=new Case_parcourt();
+	    
+		   
+		   if ((i%2)==0)
+		   {
+		         int k=( (int)( (Math.random()*100)%4))+1;
+		               switch(k)
+		             {
+		                 case 1: if (n_case_bonus <7) 
+		   													{  j=new Case_bonus();
+		   														n_case_bonus++;
+			  													break;
+		                                                     } 
+		                 case 2: if (n_case_malus <7) 
+		    												{  j=new Case_malus();
+		                                                 	  n_case_malus++;
+			                                                  break;
+		                                                     } 
+		   				 case 3: if (n_case_saut<7) 
+		   													{  //j=new Case_suat();
+		   														n_case_saut++;
+			  													break;
+		   													} 
+		                 case 4: if (n_case_question <14)  	                	 
+		                 										{  if((s%2)==0)   j=new Question_définition();
+		                 											
+		                	                                      else  j=new Question_image(); 
+		                	                                      n_case_question++;
+		                	                                      break;
+		                                                      } 
+		                  
+		              }
+		        }
+
+	return j;
+	}
+
+	/*public void paintComponent(Graphics g)
+	{ System.out.println("dsfb2");
+		//plat =new Plateau();	
+	}*/
+
+	
+	
+	
+	
+	
+	
+////////////////////////////////////////////////////
+/////////////////////////////////////////////////              Case Depart	
+	
+	 class Case_depart extends Case  {
+		
+		public Case_depart(int i)
+		{
+			super(i);
+			
+			addMouseListener(new MouseAdapter() {
+				
+				public void mouseClicked(MouseEvent t)
+				{
+							if (Partie.this.Position_joueur==numero)
+							{
+								Partie.this.de_1.lancer=true;
+								Partie.this.de_2.lancer=true;
+								
+							}
+				}
+				
+				
+			});
+				
+			
+			
+			
+		}
+		
+		public void paintComponent(Graphics g)
+		{
+		try {
+			
+			Image img = ImageIO.read(new File("media/blue.png"));
+		    g.drawImage(img,0, 0, this);  g.drawImage(img,0, 0, this); String k=""+numero;
+		    g.drawString(k , 20, 20);
+		}catch (IOException t)
+		{ t.printStackTrace();}}
+		
+
+	}
+
+//////////////////////////////////////////
+	//////////////////////////////////////       Question Image
+	
+	public class Question_image extends Case_question {
+
+		
+		public Question_image(int i)
+		{
+			numero=i;
+			addMouseListener(new MouseAdapter() {
+				
+				public void mouseClicked(MouseEvent r)
+				{
+					
+					if(Partie.this.Position_joueur==numero)
+					{
+						
+						//fen_ques_image fen =new fen_ques_image();
+						Partie.this.de_1.lancer=true;
+						Partie.this.de_2.lancer=true;
+					}
+				}
+			});
+		}
+		
+		
+		
+		public void paintComponent(Graphics g)
+		{
+		try {
+			
+			Image img = ImageIO.read(new File("media/blanc.png"));
+		    g.drawImage(img,0, 0, this); String k=""+numero;
+		    g.drawString(k ,20,20);
+		}catch (IOException t)
+		{ t.printStackTrace();}}
+		
+		
+	}
+
+	//////////////////////////////////////////////////////////////////          case Question
+	////////////////////////////////////////////////////////////////
+	
+	
+	public abstract class Case_question extends Case {
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+////////////////////////////////////////////////////
+/////////////////////////////////////////////////              Case Malus
+	
+	
+	public class Case_malus extends Case {
+
+		
+		
+		private final int Bonus=-20 ;
+		private final int pos=-2; 
+		
+		public Case_malus(int i)
+		{
+			super(i);
+			addMouseListener(new MouseAdapter() {
+				
+				public void mouseClicked()
+				{
+				if(Partie.this.Position_joueur==numero)
+				{
+					Partie.this.Position_joueur+=pos;
+					Partie.this.j1.Score+=Bonus;	
+					
+				}
+				}
+			});
+			
+		}
+		
+		
+		
+		public void paintComponent(Graphics g)
+		{
+		try {
+			
+			Image img = ImageIO.read(new File("media/blue1.png"));
+		    g.drawImage(img,0, 0, this);
+		    String k=""+numero;
+		    g.drawString(k , 20, 20);
+		}catch (IOException t)
+		{ t.printStackTrace();}}
+		
+	}
+	
+////////////////////////////////////////////////////
+/////////////////////////////////////////////////              Case saut 	
+	public class Case_suat extends Case  {
+
+		
+		
+		public Case_suat(int i)
+		{
+			super(i);
+			
+			addMouseListener(new MouseAdapter() {
+				
+				public void mouseClicked(MouseEvent t)
+				{
+					
+					if(Partie.this.Position_joueur==numero)
+					{
+				           Partie.this.Position_joueur=position();	
+					}
+				}
+				
+			});
+			
+			
+			
+		}
+		
+		public int position()
+		{
+			return ((int) ((Math.random()*1000)+1) );
+
+		}
+		 
+	
+		
+		
+		
+		public void paintComponent(Graphics g)
+		{
+		try {
+			
+			Image img = ImageIO.read(new File("media/blue3.png"));
+		    g.drawImage(img,0, 0, this);
+		    String k=""+numero;
+		    g.drawString(k , 20, 20);
+		}catch (IOException t)
+		{ t.printStackTrace();}}
+		
+	}
+	////////////////////////////////////////////////////
+	/////////////////////////////////////////////////              Case Parcours
+	
+	public class Case_parcourt extends Case  {
+		Image img;
+			public Case_parcourt(int i)
+			{
+				super(i);
+				
+				addMouseListener(new MouseAdapter() {
+					
+					public void mouseClicked(MouseEvent u)
+					{
+						
+						if (Partie.this.Position_joueur==numero)
+						{
+							
+							Partie.this.de_1.lancer=true;
+							Partie.this.de_2.lancer=true;
+						}
+					
+					}
+					public void mouseEntered (MouseEvent u)
+					{
+						try {
+							
+						 img = ImageIO.read(new File("media/blue.png"));
+						  repaint();  
+						}catch (IOException t)
+						{ t.printStackTrace();}
+					}
+					
+					
+					
+				});
+				
+			}	
+			
+			
+			
+			public void paintComponent(Graphics g)
+			{
+			try {
+				
+				 img = ImageIO.read(new File("media/blue.png"));
+			    g.drawImage(img,0, 0, this);
+			    String k=""+super.numero;
+			    g.drawString(k , 20, 20);
+			}catch (IOException t)
+			{ t.printStackTrace();}}
+		}
+	
+	////////////////////////////////////////////////////
+	/////////////////////////////////////////////////              Case Fin
+	public class Case_fin extends Case  {
+
+		
+		public Case_fin(int i)
+		{
+			super(i);
+			if ( Partie.this.Position_joueur==numero)
+			{
+				
+				Meilleur_score j=new Meilleur_score();
+				
+			}
+			
+		}
+		
+		Image img;
+		public void paintComponent(Graphics g)
+		{
+		try {
+			
+			 img = ImageIO.read(new File("media/blue.png"));
+		    g.drawImage(img,0, 0, this);
+		    String k=""+super.numero;
+		    g.drawString(k ,20, 20);
+		}catch (IOException t)
+		{ t.printStackTrace();}}
+		
+	}
+	
+	////////////////////////////////////////////////////
+	/////////////////////////////////////////////////              Case
+	
+public abstract class Case extends JLabel {
+protected  int numero;
+
+public void set_vnumero(int num)
+{ this.numero=num;
+		
+	}
+
+public Case(){}
+
+public Case(int i )
+{
+	this.numero=i;
+
+}
+	
+	public int get_numero()
+	{
+	return this.numero;	
+	}
+	}
+	////////////////////////////////////////////////////
+	/////////////////////////////////////////////////              Question définition 
+	public class Question_définition extends Case_question {
+		
+		
+		public Question_définition(int i)
+		{
+			numero=i;
+			
+			
+			addMouseListener(new MouseAdapter() {
+				
+				public void  mouseClicked(MouseEvent y)
+				{
+					if (Partie.this.Position_joueur==numero)
+					{
+						
+						
+					}
+				//	fen_ques_def j=new fen_ques_def();
+					System.out.println(20);
+					
+					
+				}
+				
+			});
+			
+			
+		}
+		
+		public void paintComponent(Graphics g)
+		{
+		try {
+			
+			Image img = ImageIO.read(new File("media/orange.png"));
+		    g.drawImage(img,0, 0, this);
+		 String k=""+numero;
+		    g.drawString(k , 20, 20);
+		}catch (IOException t)
+		{ t.printStackTrace();}}
+		
+		
+		
+
+	}
+	
+////////////////////////////////////////////////////
+/////////////////////////////////////////////////              Case Bonus 
+	
+	
+	public class Case_bonus extends Case {
+
+		public int Bonus=20;
+		public int pos=-2;
+		Image img;
+		public Case_bonus(int i)
+		{
+			
+		super(i);	
+			
+			addMouseListener(new MouseAdapter() {
+				
+				public void mouseClicked(MouseEvent t)
+				{
+					Partie.this.j1.Score+=2;
+					System.out.println(Partie.this.j1.Score);
+				}
+				public void mouseEntered(MouseEvent t)
+				{
+					try {
+						
+					 img = ImageIO.read(new File("media/blue.png"));
+					  repaint();  
+					}catch (IOException p)
+					{ p.printStackTrace();}
+				}
+				
+				
+				
+			});
+			
+		}
+		
+		
+		public void paintComponent(Graphics g)
+		{
+		try {
+			
+		 img = ImageIO.read(new File("media/blue2.png"));
+		    g.drawImage(img,0, 0, this);
+		   String k=""+numero;
+		    g.drawString(k , 20, 20);
+		}catch (IOException t)
+		{ t.printStackTrace();}}
+		
+
+		
+		
+		
+	}
+
+	
+	}
+
+	
+public class Boutton_jeu extends JPanel{                        /// la classe qui permet de définir les boutton du menu gauche
+		
+		
+		
+		public Image img;
+		Image img2;
+			public void paintComponent(Graphics g)
+			{ 
+				
+				
+			try {
+				
+				if(!entre){     
+				switch (o)
+				{
+				//case 4: img = ImageIO.read(new File("Media/margin.png"));
+				//break;
+				case 3:  img = ImageIO.read(new File("Media/nouvelle_1.png"));
+				break;
+				case 2:  img = ImageIO.read(new File("Media/ouvrir_partie.png"));
+				break;
+				case 1:  img = ImageIO.read(new File("Media/enregistrer_partier.png"));
+				break;
+				case 0:  img = ImageIO.read(new File("Media/suspendre_partie.png"));
+				break;
+				}}
+				g.clearRect(0, 0, 190, 4);
+				o++;
+				img2 = ImageIO.read(new File("Media/but_ar_bleu.png"));
+				  g.drawImage(img2,0, 0, this);
+			    g.drawImage(img,0, 0, this);
+			  //  if ((o>=3)) o=0;
+			}catch (IOException t)
+			{ t.printStackTrace();}
+			
+			try{
+				img = ImageIO.read(new File("Media/vide.png"));
+			}catch(IOException t){ t.printStackTrace();}
+			
+			
+			
+			
+			}
+			
+
+		}
+public class Boutton_quitter extends JLabel{                        /// la classe qui permet de définir les boutton du quitter
+	
+		public Image img3;
+		Image img4;
+		
+		
+		public Boutton_quitter()
+		{
+			try {
+				
+				
+				 img3 = ImageIO.read(new File("Media/button_quitter.png"));
+				 img4 = ImageIO.read(new File("Media/but_ar_bleu.png"));
+			}catch (IOException t)
+			{ t.printStackTrace();}
+		}
+			/*public void paintComponent(Graphics g)
+			{ 
+				
+				
+			
+			
+				//g.clearRect(0, 0, 144, 53);
+			
+				
+				  g.drawImage(img3,0, 0, this);
+			    //g.drawImage(img4,0, 0, this);
+			    setPreferredSize(new Dimension(190,58));
+			    try{
+					img3 = ImageIO.read(new File("Media/vide.png"));
+				}catch(IOException t){ t.printStackTrace();}*/
+			
+			
+
+		}
+
+
+
+
+
+}
+
+	
+	
+

@@ -1,0 +1,46 @@
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class Son extends Thread implements ActionListener {
+	AudioClip j1;
+	public Son() throws MalformedURLException
+	{
+		//setSize(200, 300);
+		//setVisible(true);
+  
+  URI h1;
+		JButton j=new JButton();
+		j.addActionListener(this);
+JLabel k=new JLabel();
+//setContentPane(k);
+k.add(j);
+	//h1=getresource("");	
+	j1=Applet.newAudioClip(new URL("D0.WAV"));	
+	
+	
+		
+	}
+	public void jouer()
+	{
+		j1.play();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		
+	}
+
+}

@@ -1,0 +1,143 @@
+import javax.swing.*;
+import java.util.*;
+import java.util.List;
+
+import javax.imageio.*;
+
+import java.awt.event.*;
+import java.awt.*;
+import java.io.*;
+public class Meilleur_score extends JFrame implements Serializable{
+	
+	JLabel Ok_meilleur;
+	JList< String>  list_nom_joueur;
+	JList< String>  list_score_joueur;
+	JList< String>  list_temp_complet;
+	JScrollBar scrol;
+	List<Joueur>  MeilleursScores=new ArrayList<Joueur>();
+	ObjectInputStream in=null;
+	public Meilleur_score(boolean tous_les_scores,Joueur joueur_score )
+	{    DefaultListModel< String> model_list_nom_joueur=new DefaultListModel<String>();
+	     DefaultListModel< String> model_list_score_joueur=new DefaultListModel<String>();
+	     DefaultListModel< String> model_list_temps_complet=new DefaultListModel<String>();
+	String mot;
+	
+		list_nom_joueur=new JList<String>();
+		list_score_joueur=new JList<String>();
+		list_temp_complet=new JList<String>();
+		scrol=new JScrollBar();
+		JLabel background= new JLabel();
+		
+		
+		
+		background.setIcon(new ImageIcon("media/Meilleur_score/meilleur_score_back.png"));
+		setContentPane(background);
+		background.setLayout(null);
+		
+		
+		
+		
+	    Ok_meilleur=new JLabel();
+		Ok_meilleur.setIcon(new ImageIcon("media/Meilleur_score/ok_rep_1.png"));
+		Ok_meilleur.setBounds(450, 350, 90, 43);
+	    background.add(Ok_meilleur);
+		
+		
+		
+		 Ok_meilleur.addMouseListener(new MouseAdapter() {
+			 
+			 public void mouseEntered(MouseEvent v)
+			 {    
+				 
+				 Ok_meilleur.setIcon(new ImageIcon("media/Meilleur_score/ok_rep_2.png")); 
+				 
+			 }
+			
+			 public void mouseClicked(MouseEvent v)
+			 {    
+				 
+				 dispose();
+				 
+			 }
+			 public void mouseExited(MouseEvent v)
+			 {    
+				 Ok_meilleur.setIcon(new ImageIcon("media/Meilleur_score/ok_rep_1.png"));
+				 
+			 }
+		 });
+		 
+			 try 
+		       { 
+		           in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("fichier/Meilleur_score/Meilleurs Scores.dat"))));
+		           MeilleursScores=(ArrayList<Joueur>) in.readObject(); in.close(); 
+		       } catch (IOException e) {   }
+		       catch (ClassNotFoundException e) {}
+		       scrol.add(list_nom_joueur);
+		       scrol.add(list_score_joueur);
+		       scrol.add(list_temp_complet);
+		       boolean egal=false;
+		      System.out.println(MeilleursScores.size());
+		       for(int i=0;i<MeilleursScores.size();i++)
+		       {
+		       if (tous_les_scores )
+		       {
+		       model_list_temps_complet.addElement("                    "+MeilleursScores.get(i).temps);
+		       model_list_score_joueur.addElement("           "+String.valueOf(MeilleursScores.get(i).Score));
+		       model_list_nom_joueur.addElement(MeilleursScores.get(i).nom);   
+		       }
+		       
+		       
+		       else {  
+		    	   
+		    	
+		    	   if(MeilleursScores.get(i).nom.compareTo(joueur_score.nom)==0)
+		    	   {  
+		    		   model_list_temps_complet.addElement("                    "+MeilleursScores.get(i).temps);
+				       model_list_score_joueur.addElement("           "+String.valueOf(MeilleursScores.get(i).Score));
+				       model_list_nom_joueur.addElement(MeilleursScores.get(i).nom); 
+		    	   }
+		       }
+		       
+		       }
+		       list_nom_joueur.setModel(model_list_nom_joueur);
+		       list_score_joueur.setModel(model_list_score_joueur);
+		       list_temp_complet.setModel(model_list_temps_complet);
+		
+		 
+		        background.add(list_nom_joueur);
+		        background.add(list_score_joueur);
+		        background.add(list_temp_complet);
+		        list_nom_joueur.setBackground(Color.black);
+		        list_score_joueur.setBackground(Color.black);
+		        list_temp_complet.setBackground(Color.black);
+		        list_score_joueur.setForeground(Color.white);
+		        list_temp_complet.setForeground(Color.white);
+		        list_nom_joueur.setForeground(Color.white);
+		        list_nom_joueur.setFont(new Font("Arial",Font.BOLD,16));
+		        list_score_joueur.setFont(new Font("Arial",Font.BOLD,16));
+		        list_temp_complet.setFont(new Font("Arial",Font.BOLD,16));
+		        list_nom_joueur.setBounds(29, 110,  171, 232);
+		        list_score_joueur.setBounds(213, 109,  171, 232);
+		        list_temp_complet.setBounds(397, 110,  171, 232);
+		        
+		set_fenetre_propriété();
+		setVisible(true);
+		
+		
+		
+		
+	}
+	 
+	public void set_fenetre_propriété()
+	{
+		setSize(595, 420);
+		setResizable(false);
+		setTitle("Bonjour");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		
+	}
+	
+
+}

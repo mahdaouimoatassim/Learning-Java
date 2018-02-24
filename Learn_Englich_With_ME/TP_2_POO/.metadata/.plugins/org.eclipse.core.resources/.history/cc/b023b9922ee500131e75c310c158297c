@@ -1,0 +1,112 @@
+import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.MalformedURLException;
+
+import javax.imageio.stream.FileImageInputStream;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class main {
+static JLabel s;
+static Son k;
+
+	public static void main(String []arg) throws MalformedURLException
+	{boolean faux=false;
+		
+		//Fenetre_prin fen=new Fenetre_prin();
+	//	Partie j=new Partie("mahdaoui");
+	/*	Dé m=new Dé();
+		Dé m1=new Dé();
+		Dé m2=new Dé();
+		m.valeur_dé();
+		m1.valeur_dé();
+		m2.valeur_dé();*/
+	
+	   //Fenetre_image3 j=new Fenetre_image3();
+		//Chois chois=new Chois();
+	confirmation_sauvegarder j=new confirmation_sauvegarder();
+	/*	JFrame j=new JFrame();
+		j.setSize(200, 200);
+		 k=new Son();
+		s.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent i)
+			{
+				k.jouer();
+			}
+		});
+		s=new JLabel();
+		j.add(s);
+		j.setVisible(true);*/
+	//fenetre_féfinition3 j=new fenetre_féfinition3(5);
+	
+	//	Meilleur_score n= new Meilleur_score();
+		//fen_ques_image i=new fen_ques_image();
+		/*Jeu j=new Jeu("fghj");
+		Jeu.fen_ques_def p;
+		p= j.new fen_ques_def();*/
+		
+		//Utiliateur ut=new Utiliateur();
+		
+	//	ut.setVisible(true);
+		//Jeu o=new Jeu();
+	//	ut.setVisible(true);
+	//Serialisation k=new Serialisation();
+	//Partie p =new Partie("fghjk",true,k);
+
+		//Serialisation k=new Serialisation();
+	//	k.set_attribus(p.plat.tab_cas2, p.j1,p.get_position());
+	//k.set_tab();
+	//	Serialisation k1=new Serialisation("objet2");
+	//	Serialisation k2=new Serialisation("objet3");
+		//Reprend_partie n=new Reprend_partie();
+		ObjectOutputStream out;
+		ObjectInputStream in;
+	
+	/*	try{     
+					out=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("data.dat"))));
+		out.writeObject(k);
+					//out.writeInt(6);
+					//out.writeInt(7);
+		//out.writeObject(k1);
+		//out.writeObject(k2);
+		
+		
+		out.close();
+		}catch(IOException r){r.printStackTrace();	}
+		
+		
+	//     catch(FileNotFoundException t) {t.printStackTrace();}
+	
+		
+		//out.close();
+		
+		/*try {in=new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("data.dat"))));
+		
+	Serialisation h=new Serialisation();
+	h=(Serialisation )in.readObject();
+		for(int y=0;y<100;y++)
+		{
+		System.out.println(h.k.get(y));
+		}
+	//	System.out.println(((Serialisation )in.readObject()).p5.mout);
+		//System.out.println(((Serialisation )in.readObject()).p5.mout);
+	}catch(Exception y)
+	{  y.printStackTrace();}*/
+	
+	
+	
+}
+	
+}

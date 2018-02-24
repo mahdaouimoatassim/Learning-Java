@@ -1,0 +1,8 @@
+Media\\image\\bed.png-Bed	
+Media\\image\\car.png-Car
+Media\\image\\key.png-Key
+Media\\image\\mouse.png-Mouse
+Media\\image\\tree.png-Tree
+Media\\image\\cloud.png-Cloud
+Media\\image\\door.png-Door
+Media\\image\\book.png-Book

@@ -1,0 +1,127 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+
+public class fenetre_féfinition3 extends JFrame {
+    JLabel ok;
+	JLabel background=new JLabel();
+	JLabel champ_text;
+	
+	JLabel definition;
+	String motFormé="", motDevine=""; 
+	ArrayList <JTextField> txt = new ArrayList <JTextField>(); 
+	int val;
+	public fenetre_féfinition3(  int nb)
+	{  val=nb;
+		definition=new JLabel();
+		definition.setBounds(37, 119,250, 50);
+		definition.setForeground(Color.white)
+;		champ_text=new JLabel();
+		champ_text.setLayout(new FlowLayout());
+		champ_text.setBounds(100, 180, 195, 30);
+	setSize(510,265);
+	setContentPane(background);
+	background.setLayout(null);
+	background.setIcon(new ImageIcon("media/Fenetre_définition/background_fenetre_définition.png"));
+	ok=new JLabel();
+	ok.setBounds(365, 170,108, 54);
+	ok.setIcon(new ImageIcon("media/Fenetre_définition/boutton_ok1.png"));
+	
+	background.add(ok);
+	background.add(champ_text);
+	background.add(definition);	
+	for (int j=0; j<nb; j++)
+	{
+		JTextField m = new JTextField("");
+		m.setPreferredSize(new Dimension (20,27));
+		txt.add(m); 
+		champ_text.add(m); 
+	}
+	
+	
+	
+	ok.addMouseListener(new MouseAdapter() {
+		
+		public void mouseEntered(MouseEvent t)
+		{  
+			ok.setIcon(new ImageIcon("media/Fenetre_définition/boutton_ok2.png"));
+				
+		}		
+		
+		
+		public void mouseExited(MouseEvent t)
+		{  
+			ok.setIcon(new ImageIcon("media/Fenetre_définition/boutton_ok1.png"));
+				
+		}		
+	public void mouseClicked(MouseEvent j)	
+	{	int i=0;
+	
+	System.out.println(motFormé);
+	System.out.println(motDevine);
+		while (i<val)
+		{
+			motFormé+= (txt.get(i)).getText(); 
+			i++;
+		}
+		if (motFormé.equalsIgnoreCase(motDevine))
+			{
+			
+			JOptionPane bravo; 
+			{
+				bravo = new JOptionPane();
+				JOptionPane.showMessageDialog(null, "Bravo !! vous êtes incroyable ! ", "Bravo", JOptionPane.QUESTION_MESSAGE );
+			//	Partie.score+=20; 
+			//	Partie.lblScore.displayNumber(Partie.score);
+			//	if ((Partie.plateau.getCase(Partie.pos+2) instanceof Parcours)) System.out.println("Parcours"); 
+				
+			}
+			}
+		else
+		{
+		JOptionPane dommage;  
+		{
+			dommage = new JOptionPane();
+			JOptionPane.showMessageDialog(null, "Dommage :( Retentez votre chance !", "Dommage", JOptionPane.QUESTION_MESSAGE );
+		//	Partie.score-=10; 
+		//	Partie.lblScore.displayNumber(Partie.score);
+		}
+		}
+	
+	 
+	 dispose();
+		
+		
+	}	
+		
+		
+		
+		
+		
+		
+		
+	});
+	
+	
+	
+	
+	
+	setVisible(true);
+	
+	
+	}
+	
+}
+
+
+

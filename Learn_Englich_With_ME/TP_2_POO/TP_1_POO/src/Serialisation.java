@@ -1,0 +1,39 @@
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Hashtable;
+
+
+public class Serialisation implements Serializable {
+	
+	
+	public Joueur j5=new Joueur("", 0);
+	public int position;
+	public Hashtable<Integer,String> k;
+	
+
+	public Serialisation()
+	{
+		k=new Hashtable<Integer,String>();
+	  
+	}
+	
+	public void set_attribus(Hashtable<Integer,String> k,Joueur j,int sco)
+	{
+		
+		
+		 this.j5=j;
+			this.k=k;
+			this.position=sco;
+	}
+	
+	public void set_tab()
+	{
+		
+		for(int i=0;i<100;i++)
+		{
+			
+			k.put(i, "mahdaoui"+i);
+		}
+	}
+
+}
