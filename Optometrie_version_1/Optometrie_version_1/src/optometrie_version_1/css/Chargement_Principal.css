@@ -1,0 +1,52 @@
+#Background_fenetre_principal_css{
+	
+-fx-background-image: url("../images/background.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 948 630;
+    -fx-background-position: center center;
+	
+	
+}
+#Background_fenetre_chargement_css{
+	
+-fx-background-image: url("../images/fenetre_chargement.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 948 483;
+    -fx-background-position: center center;
+	
+	
+}
+
+
+#conteneur_bouton_css{
+	
+	-fx-min-width:400;
+	-fx-pref-width:400;
+	-fx-max-width:400;
+	-fx-pref-height:50;
+	-fx-min-height:50;
+	-fx-max-height:50;
+	-fx-padding:15 80 5 80;
+
+}
+
+#adresse_field_css{
+	
+	
+	-fx-pref-height:90;
+	-fx-min-height:90;
+	-fx-max-height:90;
+	
+	
+}
+
+#info_field_css{
+
+	-fx-min-width:140;
+	-fx-pref-width:140;
+	-fx-max-width:140;
+	-fx-pref-height:25;
+	-fx-min-height:25;
+	-fx-max-height:25;
+
+}

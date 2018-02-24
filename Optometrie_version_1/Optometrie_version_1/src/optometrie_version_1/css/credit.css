@@ -1,0 +1,138 @@
+#Background_liste_credit_css{
+    -fx-background-image: url("../images/Fenetre_credit.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 936 550;
+    -fx-background-position: center center;
+    
+}
+
+#progressive_credit_css{
+	
+	
+	-fx-min-width:115;
+	-fx-max-width:115;
+	-fx-min-height:32;
+	-fx-max-height:32;
+	 -fx-font-size:14px;
+	 -fx-font-family:"Cambria";
+-fx-background-color:transparent;
+	 -fx-font-weight:bold;
+}
+
+#enfant_credite_css{
+	
+	
+	-fx-min-width:115;
+	-fx-max-width:115;
+	-fx-min-height:32;
+	-fx-max-height:32;
+	 -fx-font-size:14px;
+	 -fx-font-family:"Cambria";
+-fx-background-color:transparent;
+	 -fx-font-weight:bold;
+}
+
+#lentille_credit_css{
+	
+	
+	-fx-min-width:115;
+	-fx-max-width:115;
+	-fx-min-height:32;
+	-fx-max-height:32;
+	 -fx-font-size:14px;
+	 -fx-font-family:"Cambria";
+-fx-background-color:transparent;
+	 -fx-font-weight:bold;
+}
+
+#lunette_credit_css{
+	
+	
+	-fx-min-width:115;
+	-fx-max-width:115;
+	-fx-min-height:32;
+	-fx-max-height:32;
+	 -fx-font-size:14px;
+	 -fx-font-family:"Cambria";
+-fx-background-color:transparent;
+	 -fx-font-weight:bold;
+}
+
+#table_credit_css{
+	
+	-fx-min-width:580;
+	-fx-max-width:580;
+	-fx-min-height:275;
+	-fx-max-height:275;
+	 -fx-font-size:14px;
+	 -fx-font-family:"Cambria";
+	
+	 /*-fx-font-weight:bold;*/
+}
+
+#conteneur_bouton_css{
+	
+	-fx-min-width:400;
+	-fx-pref-width:400;
+	-fx-max-width:400;
+	-fx-pref-height:50;
+	-fx-min-height:50;
+	-fx-max-height:50;
+	-fx-padding:15 80 5 80;
+
+}
+
+
+
+#supprimer_lunette_css2{
+	
+	
+	-fx-min-width:100;
+	-fx-max-width:100;
+	-fx-min-height:25;
+	-fx-max-height:25;
+	 -fx-font-size:14px;
+	 -fx-font-family:"Cambria";
+	-fx-background-color:transparent;
+	 -fx-font-weight:bold;
+}
+
+#enregistrer_lunette_css2{
+	
+	
+	
+	-fx-min-width:100;
+	-fx-max-width:100;
+	-fx-min-height:25;
+	-fx-max-height:25;
+	 -fx-font-size:14px;
+	 -fx-font-family:"Cambria";
+	 -fx-background-color:transparent;
+	 -fx-font-weight:bold;
+}
+
+
+
+
+#adresse_field_css{
+	
+	
+	-fx-pref-height:90;
+	-fx-min-height:90;
+	-fx-max-height:90;
+	
+	
+}
+
+#info_field_css{
+
+	-fx-min-width:140;
+	-fx-pref-width:140;
+	-fx-max-width:140;
+	-fx-pref-height:25;
+	-fx-min-height:25;
+	-fx-max-height:25;
+
+
+
+}
