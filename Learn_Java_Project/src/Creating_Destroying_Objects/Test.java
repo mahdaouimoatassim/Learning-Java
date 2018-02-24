@@ -35,7 +35,7 @@ public class Test {
         */
         
         
-        // Singleton tester l'unicite de l'objet creer
+        /* Singleton tester l'unicite de l'objet creer
         
         Singleton sing2= Singleton.getInstance();
         Singleton sing3= Singleton.getInstance();
@@ -54,7 +54,25 @@ public class Test {
         oos.writeObject(sing3);
         oos.flush();
         oos.close();
+        */
         
+       /* Absolete_Object liste_humain=new Absolete_Object();
+        liste_humain.push(1);
+        liste_humain.push(2);
+        liste_humain.push(3);
+        liste_humain.push(4);
+        liste_humain.push(5);
+     
+        System.out.println(liste_humain.pop());
+        
+         int Humainss[] = {0,1,2,3};
+         Humainss[0]=5;
+         Humainss[1]=6;
+         Humainss[2]=7;
+         int size=2;
+         System.out.println(Humainss[++size]);
+          System.out.println(size);               
+        */
         
     }
     
