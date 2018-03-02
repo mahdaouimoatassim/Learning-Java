@@ -11,16 +11,20 @@ import java.io.Serializable;
  *
  * @author El Mouatassim Billah
  */
-public class Singleton implements Serializable{
- 
-    private Singleton()
-    {};
-    
-private static final Singleton instance=new Singleton();
-    
-public static Singleton getInstance() { return instance; } 
+public class Singleton implements Serializable {
 
-private Object readResolve() {return instance;}
+    private Singleton() {
+    }
+    ;
+    
+private static final Singleton instance = new Singleton();
 
+    public static Singleton getInstance() {
+        return instance;
+    }
+
+    private Object readResolve() {
+        return instance;
+    }
 
 }
