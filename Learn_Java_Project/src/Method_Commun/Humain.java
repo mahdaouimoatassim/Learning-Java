@@ -11,7 +11,7 @@ package Method_Commun;
  *
  * @author El Mouatassim Billah
  */
-public class Humain {
+public class Humain implements Cloneable{
         private String Nom, Prenom;
     private int Taille;
     private int poids;
@@ -223,7 +223,7 @@ public class Humain {
      {
          String Object_Affichage;
      
-          Object_Affichage=" je suis "+this.getNom()+" "+this.getPrenom()+", je possede les caractéristiques suivant: \n";
+          Object_Affichage="je suis "+this.getNom()+" "+this.getPrenom()+", je possede les caractéristiques suivant: \n";
           Object_Affichage+= "taille : "+this.getTaille()+";\n";
           Object_Affichage+= "Poids : "+this.getPoids()+";\n";
           Object_Affichage+= "Yeux : "+this.getYeux()+";\n";
@@ -231,7 +231,25 @@ public class Humain {
           
      return Object_Affichage;
      }
-    
+   
+//    public String To_string2()
+//    {        
+//    return  ((Object)this).toString() ;
+//    }
+     
+     @Override public Humain clone() 
+     {
+         try
+         {
+     return (Humain)super.clone();
+     
+  
+         }catch (CloneNotSupportedException e)
+         {
+         System.out.println("Le clone ne peut pas etre effectué");
+         throw  new AssertionError();
+         }       
+     }
     
 
 }
