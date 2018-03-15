@@ -5,6 +5,12 @@
  */
 package Method_Commun;
 import Creating_Destroying_Objects.*;
+import java.util.Collections;
+import java.util.Set;
+import java.util.TreeSet;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.BigInteger;
 /**
  *
  * @author El Mouatassim Billah
@@ -25,7 +31,7 @@ public class Test2 {
 ////      System.out.println(hashcode1.toString());
 //      
       
-      Humain Moatassim= new Humain.Builder("Mahdaoui","El Moutassim Billah").cheuveux("Chatin").poids(65).taille(178).yeux("Maron").immutabe(false).build();
+ //     Humain Moatassim= new Humain.Builder("Mahdaoui","El Moutassim Billah").cheuveux("Chatin").poids(65).taille(178).yeux("Maron").immutabe(false).build();
       
 //      System.out.println(Moatassim);
       
@@ -57,22 +63,36 @@ public class Test2 {
       
       //-------------------- Clone teste Hashtable des Listes linéaire chainée --------------------------/
       
-      Liste_Equipe liste1=new Liste_Equipe(3, 2);
-      
-      Liste_Equipe liste2=liste1.clone();
-      System.out.println(liste1.liste[1].Get_Humain());
-      System.out.println(liste2.liste[1].Get_Humain());
-      System.out.println(liste1.liste[1].Get_Next().Get_Humain());
-      System.out.println(liste2.liste[1].Get_Next().Get_Humain());
-      System.out.println(liste1.liste[0].Get_Humain());
-      System.out.println(liste2.liste[0].Get_Humain());
-      System.out.println(liste1.liste[0].Get_Next().Get_Humain());
-      System.out.println(liste2.liste[0].Get_Next().Get_Humain());
-      System.out.println(liste1.liste[2].Get_Humain());
-      System.out.println(liste2.liste[2].Get_Humain());
-      System.out.println(liste1.liste[2].Get_Next().Get_Humain());
-      System.out.println(liste2.liste[2].Get_Next().Get_Humain());
+//      Liste_Equipe liste1=new Liste_Equipe(3, 2);
+//      
+//      Liste_Equipe liste2=liste1.clone();
+//      System.out.println(liste1.liste[1].Get_Humain());
+//      System.out.println(liste2.liste[1].Get_Humain());
+//      System.out.println(liste1.liste[1].Get_Next().Get_Humain());
+//      System.out.println(liste2.liste[1].Get_Next().Get_Humain());
+//      System.out.println(liste1.liste[0].Get_Humain());
+//      System.out.println(liste2.liste[0].Get_Humain());
+//      System.out.println(liste1.liste[0].Get_Next().Get_Humain());
+//      System.out.println(liste2.liste[0].Get_Next().Get_Humain());
+//      System.out.println(liste1.liste[2].Get_Humain());
+//      System.out.println(liste2.liste[2].Get_Humain());
+//      System.out.println(liste1.liste[2].Get_Next().Get_Humain());
+//      System.out.println(liste2.liste[2].Get_Next().Get_Humain());
     
+      /******************** Test CompareTo************************/
+      
+      Set<String> s = new TreeSet<String>();
+      Collections.addAll(s, args);
+      System.out.println(s);
+      double k=2123464894.22;
+        BigDecimal nombre=new BigDecimal(k);
+        
+        byte [] v = {3,-2};
+        byte [] v1 = {-1};
+        BigInteger d = new BigInteger(v);
+        BigInteger d1 = new BigInteger(v1);
+        System.out.println(nombre);
+        System.out.println(d1);
     }
     
    

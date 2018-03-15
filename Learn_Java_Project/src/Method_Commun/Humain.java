@@ -5,20 +5,23 @@
  */
 package Method_Commun;
 
+import jdk.internal.org.objectweb.asm.Opcodes;
 
+import java.lang.ClassCastException;
 
 /**
  *
  * @author El Mouatassim Billah
  */
-public class Humain implements Cloneable{
-        private String Nom, Prenom;
+public class Humain implements Cloneable , Comparable<Humain>{
+    private String Nom, Prenom;
     private int Taille;
     private int poids;
+    private int Age;
     private String cheuveux;
     private String yeux;
     private boolean Immutable;
-   private volatile int hashcode1;
+    private volatile int hashcode1;
     /**
      * @return the Nom
      */
@@ -74,7 +77,19 @@ public class Humain implements Cloneable{
     public void setPoids(int poids) {
         this.poids = poids;
     }
+    /**
+     * @return the Age
+     */
+    public int getAge() {
+        return Age;
+    }
 
+    /**
+     * @param poids the Age to set
+     */
+    public void setAge(int Age) {
+        this.Age = Age;
+    }
     /**
      * @return the cheuveux
      */
@@ -116,11 +131,19 @@ public class Humain implements Cloneable{
     public void setImmutable(boolean Immutable) {
         this.Immutable = Immutable;
     }
+
+  
+    /**
+     * the classe Builder
+     */
+    
+    
     public static class Builder {
 
         private String Nom, Prenom;
         private int Taille;
         private int poids;
+        private int Age;
         private String cheuveux;
         private String yeux;
         private boolean Immutable;
@@ -128,14 +151,18 @@ public class Humain implements Cloneable{
         public Builder(String nom, String prenom) {
             this.Nom = nom;
             this.Prenom = prenom;
-        }
+    }
 
         ;
     public Builder taille(int taille) {
             this.Taille = taille;
             return this;
+    }
+    
+    public Builder age(int age) {
+            this.Age = age;
+            return this;
         }
-
     public Builder immutabe(boolean immutabe) {
             this.Immutable = immutabe;
             return this;
@@ -160,7 +187,9 @@ public class Humain implements Cloneable{
         }
 
     }
-
+ /**
+     * the Constructor Humain
+     */
     private Humain(Builder builder) {
 
         this.Nom = builder.Nom;
@@ -172,7 +201,10 @@ public class Humain implements Cloneable{
         this.Immutable=builder.Immutable;
         
     }
-    /*****************************************************/
+    /**
+     * Redefinition de la methode Equals
+     */
+
        @Override
     public boolean equals(Object o) {
         if (o == this) {
@@ -185,6 +217,7 @@ public class Humain implements Cloneable{
         return hm.getNom() == this.getNom()
                 && hm.getPrenom() == this.getPrenom()
                 && hm.getTaille() == this.getTaille()
+                && hm.getAge()== this.getAge()
                 && hm.getPoids() == this.getPoids()
                 && hm.getCheuveux() == this.getCheuveux()
                 && hm.getYeux() == this.getYeux()
@@ -192,25 +225,24 @@ public class Humain implements Cloneable{
                 ;
     }
     
-    /*****************************************************/
+     /**
+     * Redefinition de la methode HashCode
+     */
        @Override 
-     public int hashCode() 
-            {
-                
-                int result;
-                
+    public int hashCode() 
+            {                
+                int result;                
                 if ( ( Immutable && hashcode1==0) || !Immutable )
                 {
-                result=17;
-                
+                result=17;                
                 result = result*31+ (Immutable ? 1 : 0);
                 result = result*31+Nom.hashCode() ;
                 result = result*31+Prenom.hashCode();
                 result = result*31+cheuveux.hashCode() ;
                 result = result*31+yeux.hashCode() ;
                 result = result*31+poids ;
-                result = result*31+Taille ;
-        
+                result = result*31+Age ;
+                result = result*31+Taille ;        
                 }
                 else {
                     result=hashcode1;
@@ -218,12 +250,15 @@ public class Humain implements Cloneable{
                 
             return result;
             }
-/*****************************************************/
+ /**
+     * Redefinition de la methode toString
+     */
      @Override public String toString()
      {
          String Object_Affichage;
      
           Object_Affichage="je suis "+this.getNom()+" "+this.getPrenom()+", je possede les caractéristiques suivant: \n";
+          Object_Affichage+= "J'ai : "+this.getAge()+";\n";
           Object_Affichage+= "taille : "+this.getTaille()+";\n";
           Object_Affichage+= "Poids : "+this.getPoids()+";\n";
           Object_Affichage+= "Yeux : "+this.getYeux()+";\n";
@@ -241,7 +276,7 @@ public class Humain implements Cloneable{
      {
          try
          {
-     return (Humain)super.clone();
+             return (Humain)super.clone();
      
   
          }catch (CloneNotSupportedException e)
@@ -251,6 +286,12 @@ public class Humain implements Cloneable{
          }       
      }
     
-
+   @Override
+    public int compareTo(Humain o) throws ClassCastException {
+        
+        if (!(o instanceof Humain)) throw ClassCastExceptio ;
+        else return (this.getAge()-o.getAge());
+     
+    }
 }
 
