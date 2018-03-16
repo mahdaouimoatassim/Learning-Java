@@ -8,6 +8,10 @@ package Method_Commun;
 import jdk.internal.org.objectweb.asm.Opcodes;
 
 import java.lang.ClassCastException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -22,13 +26,18 @@ public class Humain implements Cloneable , Comparable<Humain>{
     private String yeux;
     private boolean Immutable;
     private volatile int hashcode1;
+    private static final String[] Hobbies={"Playing Fottball","Swimming"};
+    public static final int hour_jour=24; 
+ //   public static final List<String> = Collections.unmodifiableCollection( Arrays.asList(Hobbies));
     /**
      * @return the Nom
      */
     public String getNom() {
         return Nom;
     }
-
+    public static final String[] Hobbies() {
+    return Hobbies.clone();
+    }    
     /**
      * @param Nom the Nom to set
      */
@@ -81,7 +90,7 @@ public class Humain implements Cloneable , Comparable<Humain>{
      * @return the Age
      */
     public int getAge() {
-        return Age;
+        return this.Age;
     }
 
     /**
@@ -147,6 +156,7 @@ public class Humain implements Cloneable , Comparable<Humain>{
         private String cheuveux;
         private String yeux;
         private boolean Immutable;
+        
         ;
         public Builder(String nom, String prenom) {
             this.Nom = nom;
@@ -195,6 +205,7 @@ public class Humain implements Cloneable , Comparable<Humain>{
         this.Nom = builder.Nom;
         this.Prenom = builder.Prenom;
         this.Taille = builder.Taille;
+        this.Age=builder.Age;
         this.poids = builder.poids;
         this.cheuveux = builder.cheuveux;
         this.yeux = builder.yeux;
@@ -285,12 +296,17 @@ public class Humain implements Cloneable , Comparable<Humain>{
          throw  new AssertionError();
          }       
      }
-    
+    /*
+     
+      la redéfinition de la méthode compareTo
+      a noter que cette définition ne permet pas d'assurer la 4 provision (x.ccompareTo(y)==0)==x.equals(y)
+      car j'ai définit la fonction pour comparer entre les humains en terme d'Age.
+     *****/
+     
    @Override
     public int compareTo(Humain o) throws ClassCastException {
         
-        if (!(o instanceof Humain)) throw ClassCastExceptio ;
-        else return (this.getAge()-o.getAge());
+        return (this.getAge()-o.getAge());
      
     }
 }
