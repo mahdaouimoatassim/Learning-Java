@@ -20,11 +20,14 @@ public class Test_3 {
         Tester la violation de sécurité lors de la déclaration d'une table static et final 
         */
         
-        Humain Amine = new Humain.Builder("test1", "Amine").cheuveux("Chatin").poids(65).taille(178).yeux("Maron").immutabe(false).age(16).build();
+          Humain Amine = new Humain.Builder("test1", "Amine").cheuveux("Chatin").poids(65).taille(178).yeux("Maron").immutabe(false).age(16).build();
 //        System.out.println(Amine.Hobbies[0]);
 //        Amine.Hobbies[1]="Driving Car";
 //        System.out.println(Amine.Hobbies[1]);
     
 //        System.out.println(Amine.hour_jour);
+        
+        ImmutableClass C1=new ImmutableClass(2,1);
+        
   }
 }
