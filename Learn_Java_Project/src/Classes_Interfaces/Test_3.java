@@ -6,6 +6,9 @@
 package Classes_Interfaces;
 
 import Method_Commun.Humain;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.*;
 
 /**
  *
@@ -20,14 +23,41 @@ public class Test_3 {
         Tester la violation de sécurité lors de la déclaration d'une table static et final 
         */
         
-          Humain Amine = new Humain.Builder("test1", "Amine").cheuveux("Chatin").poids(65).taille(178).yeux("Maron").immutabe(false).age(16).build();
+//        Humain Amine = new Humain.Builder("test1", "Amine").cheuveux("Chatin").poids(65).taille(178).yeux("Maron").immutabe(false).age(16).build();
 //        System.out.println(Amine.Hobbies[0]);
 //        Amine.Hobbies[1]="Driving Car";
 //        System.out.println(Amine.Hobbies[1]);
     
 //        System.out.println(Amine.hour_jour);
         
-        ImmutableClass C1=new ImmutableClass(2,1);
+        /*********************
+        Tester les classes immutable et leurs Mutable Campaniom
+        */
+//        ComplexImmutableClass C1=new ComplexImmutableClass(2,1);
+//        
+//        ComplexImmutableClass zero=ComplexImmutableClass.ZERO;
+//        
+//        System.out.println(BigInteger.valueOf(123464));
+//        System.out.println((new BigInteger("12365498796845163749684").add(BigInteger.valueOf(1))));
+//        System.out.println(new BigDecimal(new BigInteger("12365498796845163749684").add(BigInteger.valueOf(1)),5));
+//        
+//        StringBuilder z=new StringBuilder("hdjjjnln");
+//        System.out.println(z.insert(4,1.2));
+//        
+           /*********************
+        Tester l'Item Favor compoition over inhéritence 
+        */
         
+      
+//      FavorComposition<String> s = new FavorComposition<String>();
+//    //  s.addAll(Arrays.asList("Snap", "Crackle"));/*, "Pop"*/
+//     s.add("Snap");s.add("Crackle");s.add("Pop");
+//      System.out.println(s.getAddCount());
+      
+      FavorComposition<String> s= new FavorComposition<String>(new TreeSet<String>());
+      s.addAll(Arrays.asList("Snap","Crackle","Pop"));
+      System.out.println(s.getAddCount()); 
+      
   }
+  
 }
