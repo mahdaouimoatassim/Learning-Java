@@ -15,20 +15,19 @@ public class Figure {
 
         RECTANGLE, CIRCLE
     };
-// Tag field - the shape of this figure
+
     final Shape shape;
-// These fields are used only if shape is RECTANGLE
+
     double length;
     double width;
-// This field is used only if shape is CIRCLE
+
     double radius;
-// Constructor for circle
 
     Figure(double radius) {
         shape = Shape.CIRCLE;
         this.radius = radius;
     }
-// Constructor for rectangle
+
 
     Figure(double length, double width) {
         shape = Shape.RECTANGLE;

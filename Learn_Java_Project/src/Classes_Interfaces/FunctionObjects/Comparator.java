@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes_Interfaces.Taged_Hearachrique;
-import java.util.*;
+package Classes_Interfaces.FunctionObjects;
+
 /**
  *
  * @author El Mouatassim Billah
  */
-public abstract class Figure2 {
-    
-    public abstract double area();
-    
-    
+public interface Comparator <T> {
+    public int compare(T t1, T t2); 
 }
