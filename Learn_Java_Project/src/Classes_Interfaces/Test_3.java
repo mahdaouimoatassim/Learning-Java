@@ -17,6 +17,9 @@ import java.util.*;
 public class Test_3 {
     
     
+    
+    
+    
   public static void main(String[] args) {   
       
              /*********************
@@ -53,11 +56,87 @@ public class Test_3 {
 //    //  s.addAll(Arrays.asList("Snap", "Crackle"));/*, "Pop"*/
 //     s.add("Snap");s.add("Crackle");s.add("Pop");
 //      System.out.println(s.getAddCount());
+//      
+//      FavorComposition<String> s= new FavorComposition<String>(new TreeSet<String>());
+//      s.addAll(Arrays.asList("Snap","Crackle","Pop"));
+//      System.out.println(s.getAddCount()); 
+//      
       
-      FavorComposition<String> s= new FavorComposition<String>(new TreeSet<String>());
-      s.addAll(Arrays.asList("Snap","Crackle","Pop"));
-      System.out.println(s.getAddCount()); 
+      
       
   }
+  
+  /*
+  Tester la Fonvtionnalité Skeletal Implementation
+  */
+  
+//    static List<Integer> intArrayAsList(final int[] a) {
+//        if (a == null) {
+//            throw new NullPointerException();
+//        }
+//        return new AbstractList<Integer>() {
+//            public Integer get(int i) {
+//                return a[i]; // Autoboxing (Item 5)
+//            }
+//
+//            @Override
+//            public Integer set(int i, Integer val) {
+//                int oldVal = a[i];
+//                a[i] = val; // Auto-unboxing
+//                return oldVal; // Autoboxing
+//            }
+//
+//            public int size() {
+//                return a.length;
+//            }
+//        };
+//    }
+  
+  
+  static HashMap.Entry<Integer,String> intArrayAsHashMap(final int[] a,final String[] B) {
+        if (a == null) {
+            throw new NullPointerException();
+        }
+        return new SkeletalImplementation<Integer,String>() {
+
+            @Override
+            public Integer getKey(int i) {
+            return a[i]; 
+            }
+
+            @Override
+            public String getValue(int i) {
+             return B[i];  
+            }
+            
+            
+            
+            
+//            public Integer get(int i) {
+//                return a[i]; // Autoboxing (Item 5)
+//            }
+//
+//            @Override
+//            public Integer set(int i, Integer val) {
+//                int oldVal = a[i];
+//                a[i] = val; // Auto-unboxing
+//                return oldVal; // Autoboxing
+//            }
+//
+//            public int size() {
+//                return a.length;
+//            }
+
+            @Override
+            public Integer getKey() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getValue() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+    }
   
 }
