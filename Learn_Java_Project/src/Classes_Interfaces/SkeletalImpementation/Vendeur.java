@@ -9,7 +9,7 @@ package Classes_Interfaces.SkeletalImpementation;
  *
  * @author El Mouatassim Billah
  */
-public class Vendeur implements ITravailleur{
+public class Vendeur extends  Humain2 implements ITravailleur{
      
     private class AbstractVendeurDelegator extends AbstractTravailleur {
 

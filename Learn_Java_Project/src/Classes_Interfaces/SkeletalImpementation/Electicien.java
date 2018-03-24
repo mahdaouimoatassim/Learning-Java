@@ -9,7 +9,7 @@ package Classes_Interfaces.SkeletalImpementation;
  *
  * @author El Mouatassim Billah
  */
-public class Electicien implements ITravailleur{
+public class Electicien extends Humain2 implements ITravailleur{
     
     private class AbstractElectricienDelegator extends AbstractTravailleur {
 
