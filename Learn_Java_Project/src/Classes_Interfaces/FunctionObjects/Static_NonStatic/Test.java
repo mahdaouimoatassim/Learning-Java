@@ -14,6 +14,7 @@ public class Test {
      {
          Enclosing t=new Enclosing();
          t.new Nested();
+  
          
      }
 }
