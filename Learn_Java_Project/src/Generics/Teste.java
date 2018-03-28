@@ -64,9 +64,36 @@ public class Teste {
             return false;
         }
     }
+
     
+    /**
+     *  F
+     *
+     */
+//    static Object reduce(List list, Function f, Object initVal) {
+//        synchronized (list) {
+//            Object result = initVal;
+//            for (Object o : list) {
+//                result = f.apply(result, o);
+//            }
+//            return result;
+//        }
+//    }
+
+    static Object reduce(List list, Function f, Object initVal) {
+        Object[] snapshot = list.toArray(); // Locks list internally
+        Object result = initVal;
+        for (Object o : list) {
+            result = f.apply(result, o);
+        }
+        return result;
+    }
     
-    
+    interface Function {
+
+        Object apply(Object arg1, Object arg2);
+    }
+
   public static void main(String[] args) {
       /**
        * Teste du Item 23 RawType And Generics Types.
@@ -91,16 +118,36 @@ public class Teste {
 //        String s = strings.get(0);
       
 
+      /**
+       * Test de l'Item 24 Eliminate unchecked warning
+       */
+      
+//      Set<RawType_Stamp> exaltation = new HashSet();
+//      
+//      RawType_Stamp[] tableau1={new RawType_Stamp("1","1") ,new RawType_Stamp("2","2"),new RawType_Stamp("3","3"),new RawType_Stamp("4","4")};
+//      RawType_Stamp[] tableau2=null;
+//      
+//      tableau2= toArray(tableau1);
+//
+//      System.out.println(tableau2[1].getName());
       
       
-      Set<RawType_Stamp> exaltation = new HashSet();
+      /**
+       * Test de l'Item 25 Prefer Lists To Array
+       */
       
-      RawType_Stamp[] tableau1={new RawType_Stamp("1","1") ,new RawType_Stamp("2","2"),new RawType_Stamp("3","3"),new RawType_Stamp("4","4")};
-      RawType_Stamp[] tableau2=null;
+//      Object[] objectArray = new Long[1];
+//      objectArray[0] = "I don't fit in";
+//     
+//      List<Object> ol = new ArrayList<Long>(); // Incompatible types
+//      ol.add("I don't fit in");
       
-      tableau2= toArray(tableau1);
-
-      System.out.println(tableau2[1].getName());
+      List<RawType_Stamp> Liste1= new ArrayList<>();
+      RawType_Stamp concatenation_list= null; 
+      concatenation_list= reduce(Liste1, new Function {
+  Object apply(Object arg1, Object arg2){}
+  }, Liste1)
+      
   }
   
   
