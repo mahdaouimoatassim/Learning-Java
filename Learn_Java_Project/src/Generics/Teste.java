@@ -80,18 +80,21 @@ public class Teste {
 //        }
 //    }
 
-    static Object reduce(List list, Function f, Object initVal) {
+    static Object reduce(List list, Function f,RawType_Stamp initVal) {
         Object[] snapshot = list.toArray(); // Locks list internally
-        Object result = initVal;
+        RawType_Stamp result = initVal;
         for (Object o : list) {
-            result = f.apply(result, o);
+            result = Function.apply(result,(RawType_Stamp)o);
         }
         return result;
     }
     
     interface Function {
 
-        Object apply(Object arg1, Object arg2);
+        static RawType_Stamp apply(RawType_Stamp arg1, RawType_Stamp arg2)
+        {
+        return (new RawType_Stamp(arg1.getName()+arg2.getName(),arg1.getDescription()+arg2.getDescription()));
+        };
     }
 
   public static void main(String[] args) {
@@ -141,12 +144,10 @@ public class Teste {
 //     
 //      List<Object> ol = new ArrayList<Long>(); // Incompatible types
 //      ol.add("I don't fit in");
-      
-      List<RawType_Stamp> Liste1= new ArrayList<>();
-      RawType_Stamp concatenation_list= null; 
-      concatenation_list= reduce(Liste1, new Function {
-  Object apply(Object arg1, Object arg2){}
-  }, Liste1)
+//      
+//      List<RawType_Stamp> Liste1= new ArrayList<>();
+//      RawType_Stamp concatenation_list= null; 
+//      concatenation_list= reduce(Liste1, Function , Liste1);
       
   }
   
