@@ -8,10 +8,13 @@ package Concurency;
 /**
  *
  * @author El Mouatassim Billah
+ * 
+ * cette classe represent un exemple d'un thread
+ * 
  */
-public class PingPong extends Thread{
+public class PingPong extends Thread {
     
-     private String word; // what word to print
+    private String word; // what word to print
     private int delay; // how long to pause
 
     public PingPong(String whatToSay, int delayTime, String Name) {
