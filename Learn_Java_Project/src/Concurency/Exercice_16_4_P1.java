@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Exercice_16_4_P1 {
     
-    private static volatile Integer compteur=0;
+    private static  Integer compteur=0;
     private static boolean state=false;
     
         
