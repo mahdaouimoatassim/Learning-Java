@@ -45,6 +45,7 @@ public class PingPong extends Thread {
     public static void main(String[] args) {
         new PingPong("ping", 33,"ping").start(); 
         new PingPong("PONG", 100,"PONG").start(); 
+        
     }
 
     

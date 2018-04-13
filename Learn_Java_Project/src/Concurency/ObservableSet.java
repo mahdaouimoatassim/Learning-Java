@@ -109,7 +109,7 @@ public class ObservableSet <E> extends ForwardingSet<E>{
             /*    if (e == 23) {
                 ExecutorService executor
                         = Executors.newSingleThreadExecutor();
-                final SetObserver<Integer> observer = this;
+                final SetObserver<Integer> obser    ver = this;
                 try {
                     executor.submit(new Runnable() {
                         public void run() {
