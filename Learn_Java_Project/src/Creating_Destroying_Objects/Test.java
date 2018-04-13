@@ -23,12 +23,12 @@ public class Test {
     
    
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        /*   test Static Factory Method
-        
-         Static_Factory_Method mes_information=Static_Factory_Method.GetInstance();
-         System.out.println(mes_information.getnom());
-         System.out.println(mes_information.getprenom());
-         */
+         //  test Static Factory Method
+//        
+//         Static_Factory_Method mes_information= Static_Factory_Method.GetInstance();
+//         System.out.println(mes_information.getnom());
+//         System.out.println(mes_information.getprenom());
+//         
 
         /*   test Builder patern
          Builder_Pattern Homme_1= new Builder_Pattern.Builder("Mahdaoui","Elmoutassim Billah").taille(178).poids(65).cheuveux("Chatin").yeux("Maron").build();

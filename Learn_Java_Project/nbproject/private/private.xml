@@ -27,6 +27,7 @@
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/SkeletalImplementation.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/SkeletalImpementation/AbstractTravailleur.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/Test.java</file>
+            <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/SetObserver.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/SkeletalImpementation/Vendeur.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/FunctionObjects/StringLengthComparator.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/SkeletalImpementation/Electicien.java</file>
@@ -35,10 +36,12 @@
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/Bank.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Method_Commun/Test2.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/Taged_Hearachrique/Figure.java</file>
+            <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/ExecutorServiceExemple.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/SkeletalImpementation/TesT.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/ObservableSet.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/Taged_Hearachrique/Figure2.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/BankAccount.java</file>
+            <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/ConcurrentCollectionExample.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/FavorComposition.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/FunctionObjects/Static_NonStatic/Test.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/ForwardingSet.java</file>
@@ -47,7 +50,6 @@
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Classes_Interfaces/FunctionObjects/Comparator.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Method_Commun/Equal_Method.java</file>
             <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/StripedMapImplementation.java</file>
-            <file>file:/C:/Users/El%20Mouatassim%20Billah/Documents/NetBeansProjects/Learn_Java_Project/src/Concurency/ExecutorExemple.java</file>
         </group>
     </open-files>
 </project-private>
