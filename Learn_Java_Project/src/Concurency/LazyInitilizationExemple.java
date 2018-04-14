@@ -62,4 +62,8 @@ public class LazyInitilizationExemple {
         }
         return result;
     }
+    
+    
+    
+    
 }
