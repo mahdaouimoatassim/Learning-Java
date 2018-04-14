@@ -10,6 +10,8 @@ import Method_Commun.Liste_Equipe.Joueur;
 
 /**
  *
+ * Cette classe implémente le clonage d'une liste des listes linéaires.
+ * 
  * @author El Mouatassim Billah
  */
 public class Liste_Equipe implements Cloneable{
@@ -83,52 +85,51 @@ public class Liste_Equipe implements Cloneable{
     private Humain Valeur;
     private Joueur next;
 
-    public  Joueur(int Numero, Humain Valeur,Joueur next) {
+        public Joueur(int Numero, Humain Valeur, Joueur next) {
+
+            this.Numero = Numero;
+            this.Valeur = Valeur;
+            this.next = next;
+        }
+
+        public void Set_Numero(int numero) {
+            this.Numero = numero;
+        }
+
+        public int Get_Numero() {
+            return this.Numero;
+        }
+
+        public void Set_Humain(Humain humain) {
+            this.Valeur = humain;
+        }
+
+        public Humain Get_Humain() {
+            return this.Valeur;
+        }
+
+        public void Set_Joueur(Joueur joueur) {
+            this.next = joueur;
+        }
+
+        public Joueur Get_Next() {
+            return this.next;
+        }
+        //////    Méthode Copy Récurssive
+        public Joueur deep_copy() {
+
+            return new Joueur(this.Numero, this.Valeur, next != null ? next.deep_copy() : null);
+        }
         
-        this.Numero=Numero;
-        this.Valeur=Valeur;
-        this.next=next;
-    }
-    
-    public void Set_Numero(int numero)
-    {
-        this.Numero=numero;
-    }
-    public int Get_Numero()
-    {
-        return this.Numero;
-    }
-    public void Set_Humain(Humain humain)
-    {
-        this.Valeur=humain;
-    }
-    public Humain Get_Humain()
-    {
-        return this.Valeur;
-    }
-    public void Set_Joueur(Joueur joueur)
-    {
-        this.next=joueur;
-    }
-    public Joueur Get_Next()
-    {
-        return this.next;
-    }
-    public Joueur deep_copy()
-    {
-    
-    return new Joueur(this.Numero,this.Valeur, next!=null ? next.deep_copy():null);
-    }
-     public Joueur deep_copy2()
-    {
-    Joueur j=new Joueur(Numero, Valeur, next);
-        
-    for ( Joueur t=j;t.next!=null; t=t.next )
-    {
-    t.next= new Joueur(t.next.Numero, t.next.Valeur, t.next.next);
-    }
-    return j;
-    }
+        //////    Méthode Copy Ittératif
+        public Joueur deep_copy2() {
+            Joueur j = new Joueur(Numero, Valeur, next);
+
+            for (Joueur t = j; t.next != null; t = t.next) {
+                t.next = new Joueur(t.next.Numero, t.next.Valeur, t.next.next);
+            }
+            return j;
+        }
     
     
     
