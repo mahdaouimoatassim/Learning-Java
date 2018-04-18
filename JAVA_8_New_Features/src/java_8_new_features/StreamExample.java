@@ -134,7 +134,8 @@ public class StreamExample {
         
         public EmployeDWH(String t)
         {
-        String[] ListValue=t.split(",");      
+        String[] ListValue=t.split(",");   
+       // Stream.of(ListValue).forEach(System.out::print);
         this.FirstName=ListValue[0].trim();
         this.LastName=ListValue[1].trim();
         this.equipe=Equipe.valueOf(ListValue[2].trim()) ;
