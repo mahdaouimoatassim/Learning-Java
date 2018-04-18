@@ -1,0 +1,14 @@
+Islem,Boudali,ETL,30,5 ans,EmployeOoredoo
+Rabah,Bouabdellah,ETL,31,6,EmployeOoredoo
+Oussama,Benrezkellah,Operation,30,5 ans,EmployeOoredoo
+Zoheir,Benabdelaziz,Reporting,34,8 ans,EmployeOoredoo
+Salah,Souid,ETL,34,9 ans,EmployeOoredoo
+Badreddine,Allouche,ChefService,35,10,EmployeOoredoo
+Abdelmoumen,Bediaf,Operation,30, 3 ans,EmployeOoredoo
+Anis,Boutadjine,DataQualite,26, 5 ,EmployeOoredoo
+Abderrahmane,Benkrid,DataQualite,27,3 ans,EmployeOoredoo
+Kouider,Abderrahmane,Reporting,26,5 mois,ConsultantSA
+Kheiredine,Seddoud,Reporting,25,2 mois,ConsultantSA
+Ali,Belhoucine,Reporting,29,3 ans,EmployeOoredoo
+Moatassim,Mahdaoui,Reporting,24,10 mois,EmployeOoredoo
+Abdelhak,Tuoazi,Operation,26,2 mois,ConsultantSA
