@@ -103,17 +103,20 @@ public class DateTimeExample {
 
     
     Period  Period1=Period.between(LocalDate.now(), LocalDate.now().plusMonths(2));     System.out.println(Period1);
-    Period  Period2=Period.of(00, 01, 25);                                              System.out.println(Period2);
+    Period  Period2=Period.of(00, 15, 25);                                              System.out.println(Period2);
     Period  Period3=Period.ofWeeks(2);                                                  System.out.println(Period3);
     Period  Period4 =Period.parse("P1Y12M24D");                                           System.out.println(Period4);
-  
+System.out.println("-------------------------");
+    System.out.println(Period2.negated());
+    System.out.println(Period2.normalized());  
+    
     Duration duration1=Duration.ofDays(12);                     System.out.println(duration1);
     Duration duration2=Duration.ofHours(54);                    System.out.println(duration2);
     Duration duration3=Duration.ofMillis(123546);               System.out.println(duration3);
     Duration duration4=Duration.ofSeconds(12145);               System.out.println(duration4);
     Duration duration5=Duration.parse("PT1H2M3.12S");           System.out.println(duration5);
     
-    Instant instant=Instant.now();                              System.out.println(instant);
+    Instant instant=Instant.now();                              System.out.println(instant+"hello");
             
     OffsetDateTime offsetDateTime=OffsetDateTime.now();         System.out.println(offsetDateTime);
             
