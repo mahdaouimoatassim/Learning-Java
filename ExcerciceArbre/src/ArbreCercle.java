@@ -22,6 +22,11 @@ public class ArbreCercle extends Arbre{
         this.valeur = valeur;
     }
     
+    public char getValue()
+    {
+    return  this.valeur;
+    }
+    
     @Override
     public int somme()
     {
@@ -80,4 +85,43 @@ public class ArbreCercle extends Arbre{
     if (this.getNoeudDroite()!= null) getNoeudDroite().ParcoursPostOrder();
     System.out.println("("+valeur+")");
     };
+    
+    @Override
+    public String ExpressionArbreHauteur()
+    {
+        String s;
+        if (this.getNoeudGauche()== null && this.getNoeudDroite()== null) 
+        {s= hauteur(this)+ "_null"+"_null"+"/";
+        return s;}
+        else if (this.getNoeudGauche()!= null && this.getNoeudDroite()!= null) 
+        {s= hauteur(this)+ "_"+this.noeudGauche+"_"+this.noeudDroit+"/";
+        return s+noeudGauche.ExpressionArbreHauteur()+noeudDroit.ExpressionArbreHauteur();}
+        else if (this.getNoeudGauche()!= null && this.getNoeudDroite()== null) 
+        {s= hauteur(this)+ "_"+this.noeudGauche+"_null"+"/";
+        return s+noeudGauche.ExpressionArbreHauteur();}
+        else  
+        {s= hauteur(this)+ "_null"+"_"+this.noeudDroit+"/";
+        return s+noeudDroit.ExpressionArbreHauteur();}
+        
+    };
+    
+    @Override
+    public String ExpressionArbreNiveau(int niveau_precedent)
+    {
+        String s;
+        if (this.getNoeudGauche()== null && this.getNoeudDroite()== null) 
+        {s= niveau_precedent+"_"+this.valeur+"_null"+"_null"+"/";
+        return s;}
+        else if (this.getNoeudGauche()!= null && this.getNoeudDroite()!= null) 
+        {s= niveau_precedent+"_"+this.valeur+ "_"+this.noeudGauche+"_"+this.noeudDroit+"/";
+        return s+noeudGauche.ExpressionArbreNiveau(niveau_precedent+1)+noeudDroit.ExpressionArbreNiveau(niveau_precedent+1);}
+        else if (this.getNoeudGauche()!= null && this.getNoeudDroite()== null) 
+        {s= niveau_precedent+"_"+this.valeur+ "_"+this.noeudGauche+"_null"+"/";
+        return s+noeudGauche.ExpressionArbreNiveau(niveau_precedent+1);}
+        else  
+        {s= niveau_precedent+"_"+this.valeur+ "_null"+"_"+this.noeudDroit+"/";
+        return s+noeudDroit.ExpressionArbreNiveau(niveau_precedent+1);}
+    };
+    
+    
 }

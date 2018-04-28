@@ -51,4 +51,29 @@ public abstract class Arbre {
       * la methode qui permet de calculer la somme d'une arbre
       */
     abstract public int somme();
+    /**
+     * La methode qui calcule la hauteur d'un arbre a 
+     * @param arbre
+     * @return un entier qui represente la hauteur de cette arbre
+     */
+    public int hauteur(Arbre arbre) {
+	if (arbre == null)
+	    return 0;
+	else
+	    return (1 + Math.max(hauteur(arbre.getNoeudGauche()), hauteur(arbre.getNoeudDroite())));
+    }
+    /**
+     * cette méthode permet de transformer l'arbre en une chaine de caractaire de type hauteur_@noeudGauche@noeudDroit/ 
+     * @param arbre
+     * @return un entier qui represente la hauteur de cette arbre
+     */
+    abstract public String ExpressionArbreHauteur();
+    
+    /**
+     * cette méthode permet de transformer l'arbre en une chaine de caractaire de type Niveau_@noeudGauche@noeudDroit/ 
+     * @param arbre
+     * @return un entier qui represente la hauteur de cette arbre
+     */
+    abstract public String ExpressionArbreNiveau(int niveau_precedent);
+
 }
