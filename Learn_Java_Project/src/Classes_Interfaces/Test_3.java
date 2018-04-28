@@ -47,7 +47,7 @@ public class Test_3 {
 //        StringBuilder z=new StringBuilder("hdjjjnln");
 //        System.out.println(z.insert(4,1.2));
 //        
-           /*********************
+        /*********************
         Tester l'Item Favor compoition over inhéritence 
         */
         

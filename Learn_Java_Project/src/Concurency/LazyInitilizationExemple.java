@@ -18,15 +18,18 @@ public class LazyInitilizationExemple {
     synchronized String getLazyInitialed() {
         if (LazyInitialed == null) {
             LazyInitialed = "la variable est lazyInitialed";
+            nhk.intern();
         }
         return LazyInitialed;
     }   
-    
+   
+    String nhk="dkn";
     //    case of Static field LazyInitializationHolderClass
     
     private static class FieldHolder {
 
         static final String field = "LazyIniialedStaticFeild";
+       
     }
 
     static String getField() {
