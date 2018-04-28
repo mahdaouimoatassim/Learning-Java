@@ -41,7 +41,7 @@ public class Test {
          
      //  
          
-         
+        // creer une table a deux dimensions qui contien le détail de tous les noeuds 
          
          String[][] valeur_arbre=new String[Tableau_arbre.length][4];
          for (int i =0 ; i<Tableau_arbre.length;i++)
@@ -62,7 +62,7 @@ public class Test {
         System.out.println("--------------------------------------------------");
         int niveau_seq_creation;
         int niveau_seq_affichage;
-        
+        //afficher les valeurs de l'arbre
          for (int k = 1; k < 6; k++) {
              niveau_seq_creation = 1;
              niveau_seq_affichage=1;
