@@ -69,21 +69,21 @@ public class ArbreCercle extends Arbre{
     };
     @Override
     public void ParcoursPreOrder(){   
-    System.out.println("("+valeur+")");
+    System.out.print("("+valeur+")\t");
     if (this.getNoeudGauche()!= null) getNoeudGauche().ParcoursPreOrder();
     if (this.getNoeudDroite()!= null) getNoeudDroite().ParcoursPreOrder();
     };
     @Override
     public void ParcoursInOrder(){       
     if (this.getNoeudGauche()!= null) getNoeudGauche().ParcoursInOrder();
-     System.out.println("("+valeur+")");
+     System.out.print("("+valeur+")\t");
     if (this.getNoeudDroite()!= null) getNoeudDroite().ParcoursInOrder();
     };
     @Override
     public void ParcoursPostOrder(){          
     if (this.getNoeudGauche()!= null) getNoeudGauche().ParcoursPostOrder();
     if (this.getNoeudDroite()!= null) getNoeudDroite().ParcoursPostOrder();
-    System.out.println("("+valeur+")");
+    System.out.print("("+valeur+")\t");
     };
     
     @Override

@@ -1,3 +1,6 @@
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,6 +15,12 @@ public class Test {
  
     
  
+    
+    public static void SeparerLigne()
+    {
+    System.out.println("\n---------------------------------------------------------------------------------------------\n");
+    }
+    
     /**
      * La fonction qui permet d'ajouter une valeur à un tableau à partir d'un index
      * @param s
@@ -28,6 +37,28 @@ public class Test {
         return result;
     }
     
+    
+    /**
+     * La fonction qui permet d'afficher n espace sur la console
+     * 
+     * @param count nombre d'espace à ajouter
+     */
+    
+    public static void AfficherEspace(int count) {
+        for (int i = 0; i < count; i++)
+            System.out.print(" ");
+    }
+    
+    
+    
+    /**
+     *  La fonction qui permet d'ajouter une valeur dans une table dans la position de l'index
+     * 
+     * @param s la table dans laquelle la valeur sera ajouté
+     * @param index
+     * @param Valeur la valeur à ajouter
+     * @return 
+     */
     public static boolean AjouterCellule(String[] s, int index, String Valeur) {
         boolean result = true;
         if (index < s.length) {
@@ -40,13 +71,18 @@ public class Test {
         }
         return result;
     }
+    
+    
+    
      /**
+      *
+      * La fonction qui permet de corriger la matrice en ajoutant les null manquants dans les derniers lignes
       * 
       * @param MatriceArbre  la fonction qui permet de corriger cette matrice 
       * en ajoutant les null manquant a chaque linge
       * @param niveau   le niveau de cette arbre
       */
-    public static void CorrigerMatrice(String[][] MatriceArbre,int niveau)
+    public static String[][] CorrigerMatrice(String[][] MatriceArbre,int niveau)
     {
           if (MatriceArbre[0][0]!=null)
         {
@@ -70,8 +106,40 @@ public class Test {
             }
         
         }
-       
+       return MatriceArbre;
     }
+    
+    
+    
+    
+    /**
+     * creer une table a deux dimensions qui contien le détail de tous les noeuds ( valeur, niveau, noeud droit, boeud gauche
+     * 
+     * @param ListeNoeuds la chaine de caractère qui contient le détail de tous les noeuds
+     * @return 
+     */
+    public static String[][] GetDetailArbre(String ListeNoeuds)
+    {
+        String[] Tableau_arbre = ListeNoeuds.split("/");
+
+     //  
+        // 
+        String[][] valeur_arbre = new String[Tableau_arbre.length][4];
+        for (int i = 0; i < Tableau_arbre.length; i++) {
+            for (int j = 0; j < 4; j++) {
+                valeur_arbre[i][j] = Tableau_arbre[i].split("_")[j];
+            }
+        }
+        return valeur_arbre;
+    }
+    
+    
+    
+    /**
+     * la fonction qui permet d'afficher une matrice sur la console
+     * 
+     * @param MatriceArbre 
+     */
     public static  void AfficherMatrice(String[][] MatriceArbre)
     {
         for (int i = 0; i < MatriceArbre.length; i++) {
@@ -82,6 +150,10 @@ public class Test {
         }
     }
     
+    
+    
+    
+    
     /**
      * La fonction qui permet d'afficher l'arbre à partir d'une matrice
      * @param MatriceArbre
@@ -89,47 +161,82 @@ public class Test {
      */
     public static  void AfficherArbrePartirMatrice(String[][] MatriceArbre, int niveau)
     {  
-        int largeur_ligne=6*(int)Math.pow(2, niveau-1);
-        String ligne_lettre="";
-        String ligne_Separateur="";
-        int conteur=0;
-        for(int p =1;p<=5;p++)
-        {
-         ligne_Separateur="";
-         ligne_lettre="";
-         conteur=0;
-         
-        while (conteur < 15 && MatriceArbre[p-1][conteur]!=null  )
-        {
-        if (MatriceArbre[p-1][conteur]!="*" ){
-            if(conteur==0){
-        ligne_lettre+=InsererEspace((largeur_ligne/((int)Math.pow(2, p)))-1)+MatriceArbre[p-1][conteur];
-        ligne_Separateur+=InsererEspace((largeur_ligne/((int)Math.pow(2, p)))-2)+"/ \\";
-            }else{
-             ligne_lettre+=InsererEspace(((largeur_ligne/((int)Math.pow(2, p)))-1)*2)+MatriceArbre[p-1][conteur];
-             ligne_Separateur+=InsererEspace(((largeur_ligne/((int)Math.pow(2, p)))-2)*2)+"/ \\";       
-            }
-        
-        conteur++;
-        }
-        else{
-            if(conteur==0){
-        ligne_lettre+=InsererEspace((largeur_ligne/((int)Math.pow(2, p)))-1)+" ";
-        ligne_Separateur+=InsererEspace((largeur_ligne/((int)Math.pow(2, p)))-2)+"   ";
-            }else{
-        ligne_lettre+=InsererEspace(((largeur_ligne/((int)Math.pow(2, p)))-1)*2)+"  ";
-        ligne_Separateur+=InsererEspace(((largeur_ligne/((int)Math.pow(2, p)))-2)*2)+"    ";
-            }
-        conteur++;
-        }
-        }
-        System.out.println(ligne_lettre);
-        if (p!=5) System.out.println(ligne_Separateur);
+        int largeur_ligne = 4 * (int) Math.pow(2, niveau - 1);
+        String ligne_lettre = "";
+        int conteur = 0;
+        int EspaceValeurColonne=0;
+        int EspaceValeurLigne=0;
+        for (int p = 1; p <= niveau ; p++) {
+            
+        //   Imprimer la ligne des valeurs    
+            ligne_lettre = "";
+            conteur = 0;
+            EspaceValeurColonne=(largeur_ligne / ((int) Math.pow(2, p)));
+            while (conteur <= 15 && MatriceArbre[p - 1][conteur] != null) {
                 
+                if (MatriceArbre[p - 1][conteur] != "*") {
+                    
+                    if (conteur == 0)    ligne_lettre += InsererEspace( EspaceValeurColonne - 1) + MatriceArbre[p - 1][conteur];
+                    else     ligne_lettre += InsererEspace((EspaceValeurColonne - 1) * 2) + MatriceArbre[p - 1][conteur];     
+                                  
+                } else {
+                    
+                    if (conteur == 0) ligne_lettre += InsererEspace(EspaceValeurColonne - 1) + " ";
+                    else   ligne_lettre += InsererEspace(( EspaceValeurColonne - 1) * 2) + "  ";                                      
+                }
+                 conteur++;
+            }
+            System.out.println(ligne_lettre);
+
+        //   Imprimer l'ensemble de ligne de caractère séparateur 
+            
+            EspaceValeurLigne=(int) (Math.pow(2, Math.max(5 - p - 1, 0)));
+            
+            for (int i = 1; i <= EspaceValeurLigne + (int) (Math.pow(2, Math.max(5 - p - 2, 0))); i++) {
+                for (int j = 1; j <= (int) (Math.pow(2, p - 1)); j++) {
+                    
+                    if (p < niveau)
+                    {
+                        AfficherEspace((largeur_ligne / ((int) Math.pow(2, p))) - i - 1);
+
+                        if (MatriceArbre[p - 1][j - 1] == null) {
+                            AfficherEspace(EspaceValeurLigne * 2 + i + 1);
+                        }
+
+                        if (MatriceArbre[p][j * 2 - 2] != "*") {
+                            System.out.print("/");
+                        } else {
+                            AfficherEspace(1);
+                        }
+
+                        AfficherEspace(i + i - 1);
+
+                        if (MatriceArbre[p][j * 2 - 1] != "*") {
+                            System.out.print("\\");
+                        } else {
+                            AfficherEspace(1);
+                        }
+
+                        AfficherEspace(EspaceValeurLigne * 2 - i + (5 - p + 1));
+                    }
+                }
+                System.out.println("");
+            }
+
         }
     }
     
-     public static void ConvertirArbreValeurToMatrice2(String[][] valeur_arbre, int niveau)
+    
+    /**
+     * 
+     * convertir une table de detail d'une arbre vers une matrice de valeurs de cette arbre
+     * 
+     * @param valeur_arbre
+     * @param niveau
+     * @return 
+     */
+    
+    public static String[][] ConvertirArbreValeurToMatrice2(String[][] valeur_arbre, int niveau)
     {
   
         String[] Ligne_Precedente = new String[(int) Math.pow(2, niveau-1)];
@@ -149,21 +256,18 @@ public class Test {
 
                     if (k != 1) {
 
-                        while (Ligne_Precedente[niveau_seq_affichage - 1].compareTo("null") == 0 && niveau_seq_affichage - 1 < Math.pow(2, k)) {
-                            System.out.print("null\t ");
+                        while (Ligne_Precedente[niveau_seq_affichage - 1].compareTo("null") == 0 && niveau_seq_affichage - 1 < Math.pow(2, k))
+                        {
+
                             MatriceArbre[k-1][niveau_seq_affichage-1]="*";
-                            niveau_seq_affichage++;
-                        }
-                        System.out.print(valeur_arbre[i][1] + "\t");
+                            niveau_seq_affichage++;   }
+
                         MatriceArbre[k-1][niveau_seq_affichage-1]=valeur_arbre[i][1];
                         niveau_seq_affichage++;
 
                     } else {
-                        System.out.print(valeur_arbre[i][1] + "\t");
                         MatriceArbre[k-1][niveau_seq_affichage-1]=valeur_arbre[i][1];
-                        niveau_seq_affichage++;
-                        
-                    }
+                        niveau_seq_affichage++;    }
 
                     //   Initialiser la ligne précédente pour utilisé au niveau de la ligne suivante
                     Ligne_Actuelle[niveau_seq_creation * 2 - 2] = valeur_arbre[i][2];
@@ -171,23 +275,19 @@ public class Test {
                     niveau_seq_creation++;
                 }
             }
-            System.out.println("\n");
+
         }
                
 
         
-        System.out.println("-----------------------------------------------------------------------------------------------------");
-        CorrigerMatrice(MatriceArbre, 5);
-        AfficherMatrice(MatriceArbre);
-        System.out.println("-----------------------------------------------------------------------------------------------------");
-        AfficherArbrePartirMatrice(MatriceArbre, 5);
-      
+      return CorrigerMatrice(MatriceArbre, niveau);
+   
     }   
     
-     public static void main(String[] arg) {
-     
-         /******************************   Initialiser le Schéma *******************************/
-         
+    
+    
+    public static Arbre InitialiserArbre()
+    {
          ArbreRectangle rec33 = new ArbreRectangle(33,new ArbreRectangle(12),new ArbreCercle("D".charAt(0)));
          ArbreRectangle rec8 = new ArbreRectangle(8,new ArbreCercle("E".charAt(0)),null);
          ArbreCercle cerC = new ArbreCercle("C".charAt(0),rec8,rec33);
@@ -195,78 +295,27 @@ public class Test {
          ArbreCercle cerF = new ArbreCercle("F".charAt(0),new ArbreCercle("G".charAt(0)),null);
          ArbreRectangle rec5 = new ArbreRectangle(5,cerF,new ArbreRectangle(7));
          ArbreCercle cerA = new ArbreCercle("A".charAt(0),rec5,cerB);
-         System.out.println("sfv");
-         /*****************************    Calculer la somme de cette arbre  ***************************************/
-         System.out.println(cerA.somme());
-         
-         /******************************    Affichage du schéma de l'arbre**********************/
-         cerA.ParcoursPreOrder();
-         System.out.println("*****************************************");
-         cerA.ParcoursInOrder();
-         System.out.println("*****************************************");
-         cerA.ParcoursPostOrder();
-         System.out.println("*****************************************");
-         System.out.println(cerA.ExpressionArbreHauteur());
-         System.out.println("*****************************************");
-         System.out.println(cerA.ExpressionArbreNiveau(1));
-         System.out.println("*****************************************");
-         String[] Tableau_arbre=cerA.ExpressionArbreNiveau(1).split("/");
-         
-     //  
-         
-        // creer une table a deux dimensions qui contien le détail de tous les noeuds 
-         
-         String[][] valeur_arbre=new String[Tableau_arbre.length][4];
-         for (int i =0 ; i<Tableau_arbre.length;i++)
-         {
-             for(int j =0; j<4;j++)
-             {
-             valeur_arbre[i][j]=Tableau_arbre[i].split("_")[j];
-         //    System.out.println(valeur_arbre[i][j]+"_"+i+"_"+j);
-             
-             }
-        //     System.out.println("--------------------------------------------------");
-         }
-         
-         // creer le tableau qui contient les valeurs de la liste précedente
-
-        
-
-        //afficher tous les valeurs de l'arbre
-          /*      
-         for (int k = 1; k < 6; k++) {
-
-             for (int i = 0; i < valeur_arbre.length; i++) {
-
-                 if (Integer.parseInt(valeur_arbre[i][0]) == k) {
-                     System.out.print(valeur_arbre[i][1] + "\t");
-                 }
-             }
-             System.out.println("\n");
-         }
-        
-        int niveau=5;
-       
-        System.out.println((int)Math.pow(2,niveau-1));
-        
-        String[][] matrice_valeur= new String[(int)Math.pow(2,niveau-1)][niveau];
-        
-        
-        for (int s=0;s<(int)Math.pow(2,niveau-1);s++)
-        {
-        
-        
-        };
-        */
-        
-        ConvertirArbreValeurToMatrice2(valeur_arbre,5);
-        
-        System.out.println("************************************************");
+         return cerA;
+    
+    }
+     public static void main(String[] arg) {
      
-        
-        
        
-        
+        Arbre cerA=InitialiserArbre();     // Initialiser le Schéma     
+        System.out.println(cerA.somme());  //Calculer la somme de cette arbre 
+        SeparerLigne();
+         
+        cerA.ParcoursPreOrder(); // Afficher l'arbre selon le parcours PreOrdre
+        SeparerLigne();
+        cerA.ParcoursInOrder();  // Afficher l'arbre selon le parcours InOrdre      
+        SeparerLigne();
+        cerA.ParcoursPostOrder();// Afficher l'arbre selon le parcours PostOrdre 
+        SeparerLigne();
+        String[][] ArbreValeur=GetDetailArbre(cerA.ExpressionArbreNiveau(1));  //Recuperer le détail de cette arbre dans un tableau
+        String[][] arbreMatrice= ConvertirArbreValeurToMatrice2(ArbreValeur,5); //Convertir ce tableau de détail vers une matrice de valeur
+        AfficherMatrice(arbreMatrice);// Affichage de la matrice de valeur de cette arbre
+        SeparerLigne();
+        AfficherArbrePartirMatrice(arbreMatrice,5); // affichage de l'arbre
         
      }
     
